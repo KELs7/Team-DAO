@@ -1,0 +1,45 @@
+
+<!--sliding menu component-->
+<script>
+	import Header from '$lib/header.svelte';
+	import LeftMenu from '$lib/leftMenu.svelte';
+	import Menu from '$lib/menu.svelte';
+	//css imports
+	import '$lib/css/flex.css';
+	import '$lib/css/layout.css';
+
+	let s = false;
+
+</script>
+
+<Header on:click={()=>s=!s}/>
+<LeftMenu />
+<Menu {s}/>
+
+<main>
+	<slot/>
+</main>
+
+<style>
+	main {
+		padding: 7vmax 5vw 15vw 10vw;
+		width: 100%;
+		margin: 0 auto;
+		box-sizing: border-box;
+	} 
+	@media (max-width: 1200px) {
+		main {
+			padding: 15vw 3vw 15vw 10vw;
+		}
+	}
+	@media (max-width: 480px) {
+		main {
+			padding: 30vh 5vw 15vw;
+		}
+		/* main.connected{
+			padding: 27vh 5vw 15vw;
+		} */
+    }
+</style>
+	
+

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="12 4 4 8 12 12 20 8 12 4" stroke="url(#paint0_linear_8655_6208)"/>
+  <polyline points="4 12 12 16 20 12" stroke="url(#paint1_linear_8655_6208)"/>
+  <polyline points="4 16 12 20 20 16" stroke="url(#paint2_linear_8655_6208)"/>
+  <defs>
+  <linearGradient id="paint0_linear_8655_6208" x1="3.33325" y1="18.7001" x2="32.0402" y2="31.4499" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#C5FFAA"/>
+  <stop offset="1" stop-color="#00BAC6"/>
+  </linearGradient>
+  <linearGradient id="paint1_linear_8655_6208" x1="4.16675" y1="7.03333" x2="31.8836" y2="18.7279" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#C5FFAA"/>
+  <stop offset="1" stop-color="#00BAC6"/>
+  </linearGradient>
+  <linearGradient id="paint2_linear_8655_6208" x1="4.16675" y1="30.3666" x2="31.8836" y2="42.0612" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#C5FFAA"/>
+  <stop offset="1" stop-color="#00BAC6"/>
+  </linearGradient>
+  </defs>
+</svg>

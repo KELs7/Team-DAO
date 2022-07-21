@@ -1,0 +1,17 @@
+[
+    {
+        "name":"Submit Proposal",
+        "logo":"mail-forward",
+        "path":"/submitProposal"
+    },
+    {
+        "name":"Pending Proposals",
+        "logo":"stack-2",
+        "path":"/pendingProposals"
+    },
+    {
+        "name":"About",
+        "logo":"info-circle",
+        "path":"/about"
+    }
+]

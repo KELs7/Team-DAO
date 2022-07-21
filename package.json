@@ -1,0 +1,24 @@
+{
+	"name": "multisig",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "svelte-kit dev",
+		"build": "svelte-kit build",
+		"package": "svelte-kit package",
+		"preview": "svelte-kit preview",
+		"prepare": "svelte-kit sync"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"svelte": "^3.44.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"lamden_wallet_controller": "^0.6.4",
+		"lamden-js": "^3.6.0",
+		"socket.io": "^4.4.1",
+		"socket.io-client": "^4.5.1",
+		"ws": "^8.7.0"
+	}
+}
