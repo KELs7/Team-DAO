@@ -141,7 +141,7 @@
             </div> 
         </li>
         {#if view == proposal.id}
-            <div transition:fly='{{y:-5, duration: 600}}' class='proposal proposal-background'>
+            <div transition:fly='{{y:-5, duration: 600}}' class='proposal-view'>
                 {proposal.proposal}
             </div>
         {/if}
@@ -174,15 +174,18 @@
         background-color: var(--panel-background-color);
         padding: 0.8rem 0 0 0;
     }
-    .proposal {
-        width: 80%;
-        margin: auto;
-        padding: 0.48rem 0;
-        margin-top: 0.5rem;
+    .proposal-view{
+        width: 100%;
+        margin: 0;
+        padding: 0.5rem;
+        /*margin-top: 0.5rem;*/
+        background-color: #000000;
         font-family: 'Segoe UI';
         font-size: 0.65rem;
         color: var(--flat-primary);
         border: 2px solid var(--flat-primary);
+        box-sizing: border-box;
+        overflow:scroll;
 
     }
     li {
@@ -190,21 +193,6 @@
         padding: 0.8rem 0 0.8rem 0;
         border-bottom: 1px solid #000000;
     }
-    .proposal-background {
-        background-color: #000000;
-        margin: 0;
-        padding: 0.5rem;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    /* .proposal-view {
-        overflow: hidden; 
-        background-color: #000000; 
-        width: 100%;
-        box-sizing: border-box;
-		max-height: 0; 
-		transition: max-height 0.7s ease-out; 
-    } */
     @media (max-width: 480px) {
         .inside-container{
             width: 100vw; 
