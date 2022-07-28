@@ -68,13 +68,16 @@ class WalletController {
             const { data } = e.detail
             if (data) {
                 let txResult = data
-
+                
                 const { errors, status, rejected, txData, txBlockResult } = txResult
     
                 if (errors){
                     if (errors.length > 0) {
-                        let { uid } = txData
-    
+                        let uid;
+                        if(txData!=undefined){
+                            let { uid } = txData;
+                            uid = uid;
+                        }
                         if (status === "Transaction Cancelled" && rejected){
                             let rejectedTxData = JSON.parse(rejected)
                             uid = rejectedTxData.uid
