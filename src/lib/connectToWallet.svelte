@@ -1,7 +1,7 @@
 <script>
     
     import { connectionRequest, lwc, walletAddress} from '$lib/stores/controllerStore.js';
-    import WalletController from 'lamden_wallet_controller';
+    import WalletController from '../js/walletController';
     import { createEventDispatcher, onMount } from 'svelte';
 
     const dispatch = createEventDispatcher();
