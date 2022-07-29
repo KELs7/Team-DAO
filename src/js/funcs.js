@@ -1,7 +1,5 @@
 import Lamden from 'lamden-js';
-import { getBlock, SendSingleTx } from './lamdenbatchfactory/utils.mjs';
-
-
+//import { getBlock, SendSingleTx } from './lamdenbatchfactory/utils.mjs';
 
 //const blockServiceUrl = 'http://localhost:3535'
 
@@ -162,33 +160,36 @@ export const buildTxInfo = (type, args) => {
 export const confirmProposal = (proposalId) => {
     const kwargs = {
         'proposal_id': Lamden.Encoder('int', proposalId)
+        //'proposal_id': proposalId
+        
     }
         
-    const transaction = {
-        vk: myWallet.vk,
+    const txInfo = {
+        networkType: 'marvinnet',
         contract: 'multi_sign',
-        method: 'confirm_proposal',
+        methodName: 'confirm_proposal',
         kwargs: kwargs,
-        stamps: 10000,
+        stampLimit: 100,
     };
 
-    return transaction
+    return txInfo
 
 }
 
 export const revokeProposal = (proposalId) => {
     const kwargs = {
         'proposal_id': Lamden.Encoder('int', proposalId)
+        //'proposal_id': proposalId
     }
-    const transaction = {
-        vk: myWallet.vk,
+    const txInfo = {
+        networkType: 'marvinnet',
         contract: 'multi_sign',
-        method: 'revoke_proposal',
+        methodName: 'revoke_proposal',
         kwargs: kwargs,
-        stamps: 10000,
+        stampLimit: 100,
     };
 
-    return transaction
+    return txInfo
 
 }
 
