@@ -1,92 +1,71 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+    import { onMount } from 'svelte';
+    import SlidingNotification from '$lib/slidingNotification.svelte';
+    import { lwc } from '$lib/stores/controllerStore.js';
     import { confirmProposal, revokeProposal} from '../js/funcs.js'
     import { fly } from 'svelte/transition';
-    import Button from '$lib/awesomeButton.svelte';
 
-    const dispatch = createEventDispatcher();
-
-    export let confirmed = false;
-    export let proposalId = '';
     export let proposals = '';
-
     let view = 0;
     let viewStateBtn = 'view';
     let revokeBtnLabel = 'revoke';
+    let confirmBtnLabel;
     let resultMessage = '';
     let errorInfo = '';
+    let showNotification = false;
     let link = '';
-    let cBtn;
-    let rBtn;
-    //let proposalView;
+    
 
-    const confirmBtn = async ()=> {
-
-        const txInfo =  confirmProposal(proposalId);
-        confirmBtnLabel = '. . .';
-
-       // const result = await sendProposal(txInfo);
-
-        if (result.hash){
-            resultMessage = result.result
-            link ='https://www.tauhq.com/transactions/'+ result.hash
-        } else {
-            errorInfo = result.error;
-        }
-        dispatch('message', {
-			resultMessage: resultMessage,
-            errorInfo: errorInfo,
-            notification: true,
-            link: link
-		});
-
-        setTimeout(()=>{
-            dispatch('message', {
-                notification: false,
-		    });
+    const handleTxResults = (txResults)=>{
+        const { data } = txResults
+        let txR = data
+        const { errors, txBlockResult } = txR
+        if (errors){
+            errorInfo = errors;
             confirmBtnLabel = `confirm ${proposals.confirmNum}`;
-            //console.log(`confirm: ${confirmNum}`)
-            //confirmed = true;
-            cBtn.addEventListener('click', confirmBtn);
-        }
-        , 3800) 
-    }
-
-    const revokeBtn = async ()=> {
-        const txInfo =  revokeProposal(proposalId);
-        revokeBtnLabel = '. . .';
-
-        const result = await sendProposal(txInfo)
-
-        if (result.hash){
-            resultMessage = result.result
-            link ='https://www.tauhq.com/transactions/'+ result.hash
-        } else {
-        errorInfo = result.error;
-        }
-
-        dispatch('message', {
-			resultMessage: resultMessage,
-            errorInfo: errorInfo,
-            notification: true,
-            link: link
-		});
-
-        setTimeout(()=>{
-            dispatch('message', {
-                notification: false,
-		    });
             revokeBtnLabel = 'revoke';
-            //console.log(`revoke: ${confirmNum}`)
-            confirmed=false;
-            rBtn.addEventListener('click', revokeBtn);
-        }
-        , 3800) 
-        
+            showNotification = true;
+            setTimeout(()=>{
+                showNotification = false;
+            }, 7000)
+        } else{
+            
+            if (txBlockResult && Object.keys(txBlockResult).length > 0){
+                resultMessage = txBlockResult.result;
+                link = 'https://www.tauhq.com/transactions/'+ txBlockResult.hash;
+                confirmBtnLabel = 'confirm';
+                revokeBtnLabel = 'revoke';  
+                showNotification = true;
+                setTimeout(()=>{
+                    showNotification = false;
+                }, 7000)
+            }
+        }         
     }
-    const handleOutput = (e)=>{
-        console.log(e)
+
+    //lamdenWalletController listener here
+    onMount(()=>{
+        $lwc.events.on('txStatus', handleTxResults)
+    
+    })
+
+    const confirmBtn = (e)=>{
+        confirmBtnLabel = '. . .'
+        let proposalId = parseInt(e.target.id)
+        const propslInfo = confirmProposal(proposalId)
+        $lwc.sendTransaction(propslInfo);
     }
+
+    const revokeBtn = (e)=>{
+        revokeBtnLabel = '. . .'
+        let proposalId = parseInt(e.target.id)
+        const propslInfo = revokeProposal(proposalId)
+        $lwc.sendTransaction(propslInfo);
+    }
+
+    // const handleOutput = (e)=>{
+    //     console.log(e)
+    // }
 </script>
 
 <div class='container'>
@@ -112,47 +91,46 @@
                                 view=proposal.id;
                             }
                         }}
-                    >{viewStateBtn}</button>
+                    >
+                        <div><strong>{viewStateBtn}</strong></div>
+                    </button>
 
-                    
-
-                    <!--button on:click|once={confirmBtn} bind:this={cBtn}>{confirmBtnLabel}</button-->
-                    
-                    <Button 
-                        on:output={handleOutput}
-                        btnLabel={`confirm ${proposal.confirmNum}`}
-                        returnBtnLabel='confirm'
-                        error=''
-                        awaitMode=true
-                        fn={confirmBtn}/>
+                                       
+                    <button 
+                        class="outlined primary white"
+                        
+                        on:click={confirmBtn}
+                        ><div><strong id = {proposal.id}>{`confirm ${proposal.confirmNum}`}</strong></div>
+                        </button>
                     
                     {#if proposal.iSubmitted}
-                        <!--button on:click|once={revokeBtn} bind:this={rBtn}>{revokeBtnLabel}</button-->
-                        <Button 
-                            on:output={handleOutput}
-                            btnLabel='revoke'
-                            returnBtnLabel='revoke'
-                            error=''
-                            awaitMode=true
-                            fn={revokeBtn}/>
+                        <button 
+                            class="outlined primary white"
+                            
+                            on:click={revokeBtn}
+                        ><div><strong id = {proposal.id}>{revokeBtnLabel}</strong></div>
+                        </button>
                     
                     {/if} 
                 </div>        
             </div> 
         </li>
+
         {#if view == proposal.id}
             <div transition:fly='{{y:-5, duration: 600}}' class='proposal-view'>
                 {proposal.proposal}
             </div>
         {/if}
-        <!--div bind:this={proposalView} class="proposal-view">
-            {proposal.proposal}
-        </div-->
         {/each}
     </ul>
 </div>
 
-
+<SlidingNotification 
+    {resultMessage}
+    {errorInfo} 
+    show={showNotification} 
+    {link}
+/>
 
 <style>
     .container {
