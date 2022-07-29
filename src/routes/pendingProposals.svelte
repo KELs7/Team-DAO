@@ -39,7 +39,8 @@
   	let link = '';
 
 	// get users wallet to check whether user has already confirmed a proposal
-	const w = $walletAddress;
+	//const w = $walletAddress;
+	//console.log(w)
 
 	const proposalFetch = [];
 
@@ -50,8 +51,8 @@
 				type: proposalsFromBlockService[i].type, 
 				proposal:JSON.stringify(proposalsFromBlockService[i]),
 				//confirmNum: c.multi_sign.owner_confirmed[i].length || confirmNum,
-				confirmNum: blockServiceData.multi_sign.owner_confirmed[i].length ,
-				iSubmitted: blockServiceData.multi_sign.owner_confirmed[i].includes(w)
+				confirmNum: blockServiceData.multi_sign.owner_confirmed[i].length,
+				iSubmitted: blockServiceData.multi_sign.owner_confirmed[i].includes($walletAddress)
 			})
 		}
 	};
