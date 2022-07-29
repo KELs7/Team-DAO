@@ -14,7 +14,6 @@
 <script>
 	import ProposalList from '$lib/proposalSomthing.svelte';
 	import { walletAddress } from '$lib/stores/controllerStore.js';
-	import SlidingNotification from '$lib/slidingNotification.svelte';
     //import { Socket } from 'dgram';
 
 	//import { io } from 'node_modules/socket.io/client-dist/socket.io.js';
@@ -38,10 +37,6 @@
 	let showNotification = false;
   	let link = '';
 
-	// get users wallet to check whether user has already confirmed a proposal
-	//const w = $walletAddress;
-	//console.log(w)
-
 	const proposalFetch = [];
 
 	if (proposalsFromBlockService){
@@ -50,7 +45,6 @@
 				id:i, 
 				type: proposalsFromBlockService[i].type, 
 				proposal:JSON.stringify(proposalsFromBlockService[i]),
-				//confirmNum: c.multi_sign.owner_confirmed[i].length || confirmNum,
 				confirmNum: blockServiceData.multi_sign.owner_confirmed[i].length,
 				iSubmitted: blockServiceData.multi_sign.owner_confirmed[i].includes($walletAddress)
 			})
@@ -58,21 +52,21 @@
 	};
 
 
-	let n = 0;
-	const forSlidingMenu = (event)=> {
-		n++;
-		resultMessage = event.detail.resultMessage;
-		errorInfo = event.detail.errorInfo;
-		showNotification = event.detail.notification;
-		link = event.detail.link;
+	// let n = 0;
+	// const forSlidingMenu = (event)=> {
+	// 	n++;
+	// 	resultMessage = event.detail.resultMessage;
+	// 	errorInfo = event.detail.errorInfo;
+	// 	showNotification = event.detail.notification;
+	// 	link = event.detail.link;
 		
-		if (n==2){
-			setTimeout(()=>{
-				location.reload(); 
-				n = 0;	
-			}, 3200)
-		}
-	}
+	// 	if (n==2){
+	// 		setTimeout(()=>{
+	// 			location.reload(); 
+	// 			n = 0;	
+	// 		}, 3200)
+	// 	}
+	// }
 
 </script>
 
@@ -91,13 +85,6 @@
 {:else}
 	<div class='no-pending'>No pending proposals</div>
 {/if}
-
-<SlidingNotification 
-    {resultMessage}
-    {errorInfo} 
-    show={showNotification} 
-    {link}
-/> 
 
 <style>
     .head-bar {
