@@ -159,9 +159,7 @@ export const buildTxInfo = (type, args) => {
 
 export const confirmProposal = (proposalId) => {
     const kwargs = {
-        'proposal_id': Lamden.Encoder('int', proposalId)
-        //'proposal_id': proposalId
-        
+        'proposal_id': Lamden.Encoder('int', proposalId)   
     }
         
     const txInfo = {
@@ -179,8 +177,8 @@ export const confirmProposal = (proposalId) => {
 export const revokeProposal = (proposalId) => {
     const kwargs = {
         'proposal_id': Lamden.Encoder('int', proposalId)
-        //'proposal_id': proposalId
     }
+    
     const txInfo = {
         networkType: 'marvinnet',
         contract: 'multi_sign',
