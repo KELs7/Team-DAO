@@ -8,13 +8,19 @@
     export let proposals = '';
     let view = 0;
     let viewStateBtn = 'view';
-    let revokeBtnLabel = 'revoke';
-    let confirmBtnLabel;
+    let revokeBtnLabel = {};
+    let confirmBtnLabel = {};
     let resultMessage = '';
     let errorInfo = '';
     let showNotification = false;
     let link = '';
-    
+
+    let confirmBtn;
+    let revokeBtn;
+
+    //store current proposal id
+    let proposalId;
+   
 
     const handleTxResults = (txResults)=>{
         const { data } = txResults
@@ -22,8 +28,14 @@
         const { errors, txBlockResult } = txR
         if (errors){
             errorInfo = errors;
-            confirmBtnLabel = `confirm ${proposals.confirmNum}`;
-            revokeBtnLabel = 'revoke';
+            proposals.map(proposal =>{
+                if(proposal.id===proposalId){
+                    confirmBtnLabel[proposal.id] = `confirm ${proposal.confirmNum}`;
+                    revokeBtnLabel[proposal.id] = 'revoke';
+                }
+            })
+            confirmBtn.addEventListener("click", confirm);
+            revokeBtn.addEventListener("click", revoke);
             showNotification = true;
             setTimeout(()=>{
                 showNotification = false;
@@ -49,17 +61,17 @@
     
     })
 
-    const confirmBtn = (e)=>{
-        confirmBtnLabel = '. . .'
-        let proposalId = parseInt(e.target.id)
+    const confirm = (e)=>{
+        proposalId = e.target.id;
+        confirmBtnLabel[proposalId] = '. . .';
         const propslInfo = confirmProposal(proposalId)
         $lwc.sendTransaction(propslInfo);
     }
 
-    const revokeBtn = (e)=>{
-        revokeBtnLabel = '. . .'
-        let proposalId = parseInt(e.target.id)
-        const propslInfo = revokeProposal(proposalId)
+    const revoke = (e)=>{
+        proposalId = e.target.id;
+        revokeBtnLabel[proposalId] = '. . .';
+        const propslInfo = revokeProposal(proposalId);
         $lwc.sendTransaction(propslInfo);
     }
 
@@ -99,16 +111,22 @@
                     <button 
                         class="outlined primary white"
                         
-                        on:click={confirmBtn}
-                        ><div><strong id = {proposal.id}>{`confirm ${proposal.confirmNum}`}</strong></div>
-                        </button>
+                        on:click|once={confirm}
+                        bind:this={confirmBtn}
+                        ><div><strong id = {proposal.id}>{
+                            confirmBtnLabel[proposal.id]?confirmBtnLabel[proposal.id]:`confirm ${proposal.confirmNum}`
+                        }</strong></div>
+                    </button>
                     
                     {#if proposal.iSubmitted}
                         <button 
                             class="outlined primary white"
                             
-                            on:click={revokeBtn}
-                        ><div><strong id = {proposal.id}>{revokeBtnLabel}</strong></div>
+                            on:click|once={revoke}
+                            bind:this={revokeBtn}
+                        ><div><strong id = {proposal.id}>{
+                            revokeBtnLabel[proposal.id]?revokeBtnLabel[proposal.id]:'revoke'
+                            }</strong></div>
                         </button>
                     
                     {/if} 
