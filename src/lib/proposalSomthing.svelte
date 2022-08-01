@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
-    import SlidingNotification from '$lib/slidingNotification.svelte';
     import { lwc } from '$lib/stores/controllerStore.js';
+    import { resultMessage, errorInfo, link, showNotification } from '$lib/stores/toasterInfo.js';
     import { confirmProposal, revokeProposal} from '../js/funcs.js'
     import { fly } from 'svelte/transition';
 
@@ -11,10 +11,6 @@
     //store individual button names
     let revokeBtnLabel = {};
     let confirmBtnLabel = {};
-    let resultMessage = '';
-    let errorInfo = '';
-    let showNotification = false;
-    let link = '';
 
     //store individual buttons elements
     let confirmBtns = {};
@@ -29,7 +25,8 @@
         let txR = data
         const { errors, txBlockResult } = txR
         if (errors){
-            errorInfo = errors;
+            errorInfo.set(errors);
+
             proposals.map(proposal =>{
                 if(proposal.id===proposalId){
                     confirmBtnLabel[proposal.id] = `confirm ${proposal.confirmNum}`;
@@ -40,28 +37,33 @@
                 }
             })
             
-            showNotification = true;
+            showNotification.set(true);
+            
             setTimeout(()=>{
-                showNotification = false;
-            }, 7000)
+                
+                showNotification.set(false)
+            
+            }, 6000)
         } else{
             
             if (txBlockResult && Object.keys(txBlockResult).length > 0){
-                resultMessage = txBlockResult.result;
-                link = 'https://www.tauhq.com/transactions/'+ txBlockResult.hash;
+                resultMessage.set(txBlockResult.result);
+                link.set('https://www.tauhq.com/transactions/'+ txBlockResult.hash);
                 confirmBtnLabel = 'confirm';
                 revokeBtnLabel = 'revoke';  
+                
                 showNotification = true;
                 setTimeout(()=>{
-                    showNotification = false;
-                }, 7000)
+                    
+                    showNotification.set(false);
+                   
+                }, 6000)
             }
         }         
     }
 
     //lamdenWalletController listener here
     onMount(()=>{
-
 
         $lwc.events.on('txStatus', handleTxResults)
     
@@ -81,9 +83,6 @@
         $lwc.sendTransaction(propslInfo);
     }
 
-    // const handleOutput = (e)=>{
-    //     console.log(e)
-    // }
 </script>
 
 <div class='container'>
@@ -148,13 +147,6 @@
         {/each}
     </ul>
 </div>
-
-<SlidingNotification 
-    {resultMessage}
-    {errorInfo} 
-    show={showNotification} 
-    {link}
-/>
 
 <style>
     .container {
