@@ -1,5 +1,6 @@
 <script>
 	import { fly } from 'svelte/transition';
+	
 	export let resultMessage = '';
 	export let errorInfo = '';
 	export let show = false;
@@ -24,7 +25,7 @@
 <style>
 	.container {
 		display: flex;
-		z-index: 800;
+		z-index: 100;
 		padding: 0.5rem 0 0.8rem 0;
     	flex-direction: column;
 		justify-content: center;
