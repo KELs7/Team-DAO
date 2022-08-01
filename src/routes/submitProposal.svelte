@@ -1,15 +1,15 @@
 <script>
     import { fly } from 'svelte/transition';
+    import { onMount } from 'svelte';
+    import { resultMessage, errorInfo, link, showNotification } from '$lib/stores/toasterInfo.js';
     import { buildTxInfo } from '../js/funcs.js';
     import {proposalBarNames, stateUpdateProposals, lst001Proposals} from '$lib/config/submitPageLayout.js'
-    import { onMount } from 'svelte';
     import { lwc } from '$lib/stores/controllerStore.js';
     import CollapsableBar from '$lib/collapsableBar.svelte';
     import CollapsableBarLayer from '$lib/collapsableBarLayer.svelte';
     import { inputValidators } from '$lib/components/inputValidators/inputValidators.js';
     import SubmitButton from '$lib/anotherBtn.svelte';
-    import SlidingNotification from '$lib/slidingNotification.svelte';
-    
+
     const { InputAV, InputDV, InputTKV, InputWNV } = inputValidators
     
     //inputs
@@ -42,12 +42,6 @@
     let extAction_actionCore = '';
     let extAction_action = '';
     let extAction_payload = '';
-    
-    //tx results & notification
-    let resultMessage = '';
-	let errorInfo = '';
-	let showNotification = false;
-  	let link = '';
 
     let inputError = 'inactive';
     let btnl = 'submit';
@@ -58,23 +52,22 @@
         let txR = data
         const { errors, txBlockResult } = txR
         if (errors){
-            errorInfo = errors;
+            errorInfo.set(errors);
             btnl = 'submit';
-            showNotification = true;
+            showNotification.set(true);
             setTimeout(()=>{
-                showNotification = false;
-            }, 7000)
+                showNotification.set(false);
+            }, 6000)
         } else{
             
             if (txBlockResult && Object.keys(txBlockResult).length > 0){
-                //console.log(txBlockResult)
-                resultMessage = txBlockResult.result;
-                link = 'https://www.tauhq.com/transactions/'+ txBlockResult.hash;
+                resultMessage.set(txBlockResult.result);
+                link.set('https://www.tauhq.com/transactions/'+ txBlockResult.hash);
                 btnl = 'submit';  
-                showNotification = true;
+                showNotification.set(true);
                 setTimeout(()=>{
-                    showNotification = false;
-                }, 7000)
+                    showNotification.set(false);
+                }, 6000)
             }
         }         
     }
@@ -503,12 +496,7 @@
     </CollapsableBar>
 {/each}
 
-<SlidingNotification 
-    {resultMessage}
-    {errorInfo} 
-    show={showNotification} 
-    {link}
-/>
+
 
 <style>
     form {
