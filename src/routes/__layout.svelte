@@ -4,11 +4,14 @@
 	import Header from '$lib/header.svelte';
 	import LeftMenu from '$lib/leftMenu.svelte';
 	import Menu from '$lib/menu.svelte';
+	import { resultMessage, errorInfo, link, showNotification } from '$lib/stores/toasterInfo.js';
+	import SlidingNotification from '$lib/slidingNotification.svelte';
+	
 	//css imports
 	import '$lib/css/flex.css';
 	import '$lib/css/layout.css';
 
-	let s = false;
+	let s = false;	
 
 </script>
 
@@ -19,6 +22,13 @@
 <main>
 	<slot/>
 </main>
+
+<SlidingNotification 
+    resultMessage = {$resultMessage}
+    errorInfo = {$errorInfo} 
+    show={$showNotification} 
+    link={$link}
+/>
 
 <style>
 	main {
