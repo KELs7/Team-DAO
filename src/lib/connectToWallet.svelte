@@ -1,6 +1,7 @@
 <script>
     
     import { connectionRequest, lwc, walletAddress} from '$lib/stores/controllerStore.js';
+    import { errorInfo, showNotification } from '$lib/stores/toasterInfo.js';
     import WalletController from '../js/walletController';
     import { createEventDispatcher, onMount } from 'svelte';
 
@@ -13,7 +14,13 @@
         const handleWalletInfo = (wInfo) => {
             if (wInfo.errors){
                 wInfo.errors.forEach(err => {
-                    dispatch('walletInfo', err)
+                    //dispatch('walletInfo', err)
+                    errorInfo.set(err);
+                    showNotification.set(true);
+
+                    setTimeout(()=>{
+                        showNotification.set(false);
+                    }, 4000)
                 })
             }else{
                 walletAddress.set(wInfo.wallets[0])
