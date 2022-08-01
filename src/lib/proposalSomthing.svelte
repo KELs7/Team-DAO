@@ -8,6 +8,7 @@
     export let proposals = '';
     let view = 0;
     let viewStateBtn = 'view';
+    //store individual button names
     let revokeBtnLabel = {};
     let confirmBtnLabel = {};
     let resultMessage = '';
@@ -15,8 +16,9 @@
     let showNotification = false;
     let link = '';
 
-    let confirmBtn;
-    let revokeBtn;
+    //store individual buttons elements
+    let confirmBtns = {};
+    let revokeBtns = {};
 
     //store current proposal id
     let proposalId;
@@ -32,10 +34,12 @@
                 if(proposal.id===proposalId){
                     confirmBtnLabel[proposal.id] = `confirm ${proposal.confirmNum}`;
                     revokeBtnLabel[proposal.id] = 'revoke';
+                    
+                    confirmBtns[proposal.id].addEventListener("click", confirm);
+                    revokeBtns[proposal.id].addEventListener("click", revoke);
                 }
             })
-            confirmBtn.addEventListener("click", confirm);
-            revokeBtn.addEventListener("click", revoke);
+            
             showNotification = true;
             setTimeout(()=>{
                 showNotification = false;
@@ -57,6 +61,8 @@
 
     //lamdenWalletController listener here
     onMount(()=>{
+
+
         $lwc.events.on('txStatus', handleTxResults)
     
     })
@@ -112,7 +118,7 @@
                         class="outlined primary white"
                         
                         on:click|once={confirm}
-                        bind:this={confirmBtn}
+                        bind:this={confirmBtns[proposal.id]}
                         ><div><strong id = {proposal.id}>{
                             confirmBtnLabel[proposal.id]?confirmBtnLabel[proposal.id]:`confirm ${proposal.confirmNum}`
                         }</strong></div>
@@ -123,7 +129,7 @@
                             class="outlined primary white"
                             
                             on:click|once={revoke}
-                            bind:this={revokeBtn}
+                            bind:this={revokeBtns[proposal.id]}
                         ><div><strong id = {proposal.id}>{
                             revokeBtnLabel[proposal.id]?revokeBtnLabel[proposal.id]:'revoke'
                             }</strong></div>
