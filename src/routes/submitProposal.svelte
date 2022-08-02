@@ -181,7 +181,7 @@
             {#each stateUpdateProposals as stateProposal}
                 <CollapsableBarLayer layerName={stateProposal}>
                     {#if stateProposal == 'add owner'}
-                    <div class='form'>
+                    <div class='form' transition:fly='{{y:-20, duration: 600}}'>
                     	 <div style="grid-column: 1/2">
                             <label for='addNewOwner'>
                                 owner wallet
