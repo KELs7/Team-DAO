@@ -83,6 +83,8 @@
         $lwc.sendTransaction(propslInfo);
     }
 
+    //ptype , action-btn
+
 </script>
 
 <div class='container'>
@@ -92,10 +94,11 @@
         {#each proposals as proposal}
 
         <li>
-            <div style="display: flex; justify-content:space-around; align-content: center;">
-                <div>{proposal.id}</div>
-                <div class='ptype'>{proposal.type}</div>
-                <div class='action-btn'>
+            <!--div style="display: flex; justify-content:space-around; align-content: center;"-->
+            <div style="display:grid; grid-template-columns: 1fr 1fr 2fr;">
+                <div style="grid-column: 1/2; margin-left: 0.8rem">{proposal.id}</div>
+                <div style="grid-column: 2/3">{proposal.type}</div>
+                <div style="grid-column: 3/5">
 
                     <button 
                         class="outlined primary white"
@@ -150,7 +153,7 @@
 
 <style>
     .container {
-        width: 81%;
+        width: 80%;
         margin: auto;
         margin-top: 0.1rem;
         overflow-x: scroll;
@@ -171,7 +174,7 @@
     .proposal-view{
         width: 100%;
         margin: 0;
-        padding: 0.5rem;
+        padding: 1rem;
         /*margin-top: 0.5rem;*/
         background-color: #000000;
         font-family: 'Segoe UI';
@@ -181,6 +184,9 @@
         box-sizing: border-box;
         overflow:scroll;
 
+    }
+    button {
+        font-size: 0.58rem;
     }
     li {
         list-style: none;
