@@ -1,0 +1,34 @@
+{
+    "multi_sign": {
+        "proposal": {
+            "1": {
+                "type": "state_update", 
+                "add_owner":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "2": {
+                "type": "lst001", 
+                "token": "currency",
+                "payload": {
+                    "method": "transfer", 
+                    "amount": {"__fixed__": 100},
+                    "to": "chris"  
+                }
+                
+            },
+
+            "3": {
+                "type": "action",
+                "action": "con_action_contract",
+                "bulk": false,
+                "payload":{
+                    "func": "do_something"
+                }
+            }
+        },
+        "owner_confirmed": {
+            "1": ["benjos"],
+            "2": ["jeff", "rob"],
+            "3": ["benjos", "jeff"]
+        }
+    }
+}
