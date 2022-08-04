@@ -52,7 +52,7 @@
                 confirmBtnLabel = 'confirm';
                 revokeBtnLabel = 'revoke';  
                 
-                showNotification = true;
+                showNotification.set(true);
                 setTimeout(()=>{
                     
                     showNotification.set(false);
