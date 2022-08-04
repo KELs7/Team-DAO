@@ -1,9 +1,58 @@
 <script>
-	import WalletConnect from '$lib/connectToWallet.svelte';
+	import { onMount } from 'svelte';
+	import { lwc, walletAddress} from '$lib/stores/controllerStore.js';
+	import { errorInfo, showNotification } from '$lib/stores/toasterInfo.js';
+	import WalletController from '../js/walletController';
 	import { page } from '$app/stores';
 	
+	let walletInfo = 'connect';
+	let lamdenWalletController;
 
-	let walletInfo = 'connect'
+	onMount(()=>{
+        lamdenWalletController = new WalletController()
+        lamdenWalletController.storeConnectionRequest(connectionRequest)
+        lamdenWalletController.events.on('newInfo', handleWalletInfo);
+    })
+
+    const connectionRequest = {
+        appName: 'RocketSwap Team DAO', 
+        version: '1.0.1', 
+        logo: '../static/icons/logo.png', 
+        contractName: 'multi_sign', 
+        networkType: "marvinnet"
+    };
+
+    const handleWalletInfo = (wInfo) => {
+        if (wInfo.errors){
+            wInfo.errors.forEach(err => {
+				walletInfo = 'connect';
+                errorInfo.set(err);
+                showNotification.set(true);
+
+                setTimeout(()=>{
+                    showNotification.set(false);
+                }, 4000)
+            })
+        }else{
+			let w = wInfo.wallets[0];
+            walletAddress.set(w);
+            walletInfo = w.substring(0,7) + ' . . . ' + w.substring(60,64);
+            
+        }        
+    };
+
+	const attemptConnect = ()=>{
+
+        lamdenWalletController.walletIsInstalled()
+        .then(installed=>{
+			lwc.set(lamdenWalletController)
+            if(!installed){
+                errorInfo.set('wallet not installed')
+            }
+        })
+    }
+	
+
 	export let s = false;
 
     const menuItems = [
@@ -27,12 +76,7 @@
 		} 
     ]
 
-	const handleConnectionInfo=(e)=>{
-		walletInfo = e.detail
-	}
 </script>
-
-<WalletConnect on:walletInfo={handleConnectionInfo}/>
 
 <div class="mobile slideNav {s?'slide':''}">
 	
@@ -72,7 +116,7 @@
 			</li>
 			
 		{/each}
-		<li><div class='walletConnect'>{walletInfo}</div></li>
+		<li><button class='walletConnect' on:click={attemptConnect}>{walletInfo}</button></li>
 	</ul>
 	<div class="socials flex align-center space-between">
 		<a href="https://twitter.com/RSwapOfficial" >
