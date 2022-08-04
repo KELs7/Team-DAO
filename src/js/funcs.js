@@ -85,7 +85,7 @@ export const buildTxInfo = (type, args) => {
                     'amount': Lamden.Encoder('float',args[1]),
                     'to': args[2]   
                     },
-                'type': 'lst001_proposal'
+                'type': 'lst001'
                 }
             };
             break;
@@ -98,7 +98,7 @@ export const buildTxInfo = (type, args) => {
                     'amount': Lamden.Encoder('float',args[1]),
                     'to': args[2],
                     },
-                'type': 'lst001_proposal'
+                'type': 'lst001'
                 }
             };
             break;
@@ -112,7 +112,7 @@ export const buildTxInfo = (type, args) => {
                     'to': args[2],
                     'main_account': args[3],
                     },
-                'type': 'lst001_proposal'
+                'type': 'lst001'
                 }
             };
             break;
@@ -122,7 +122,7 @@ export const buildTxInfo = (type, args) => {
                 'action': args[0],
                 'bulk': args[1],
                 'payload':args[2],
-                'type': 'action_proposal'
+                'type': 'action'
                 }
             };
             break;
@@ -132,7 +132,7 @@ export const buildTxInfo = (type, args) => {
                 'action_core': args[0],
                 'action': args[1],
                 'payload':args[2],
-                'type': 'external_action_proposal'
+                'type': 'external_action'
                 }
             };
             break;
