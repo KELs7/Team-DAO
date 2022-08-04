@@ -12,7 +12,7 @@
 	{#if link}
 		<p style>sucess!</p>
 	{#if resultMessage}
-		<p style='margin-top: -0.2rem; font-size: 0.72rem'>{resultMessage}</p>
+		<p class='result-container'>{resultMessage}</p>
 	{/if}
 		<a href={link}>view transaction</a>
 	{/if}
@@ -40,6 +40,11 @@
 		background-color: #24ffbd;
 		line-height: 0.5rem;
 	}
-	
+	.result-container{
+		margin-top: -0.2rem; 
+		font-size: 0.68rem;
+		width: 80%;
+		overflow: hidden;
+	}
 	
 </style>
