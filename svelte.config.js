@@ -14,6 +14,9 @@ import adapter from '@sveltejs/adapter-netlify';
 export default {
   kit: {
     // default options are shown
-    adapter: adapter()
+    adapter: adapter({
+		edge: true,
+		split: false
+	})
   }
 };
