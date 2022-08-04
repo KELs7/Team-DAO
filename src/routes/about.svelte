@@ -1,4 +1,4 @@
-<script context='module'>
+<!-- <script context='module'>
     export async function load({fetch}){
         const res = await fetch('http://localhost:3535/current/all/multi_sign/');
         const blockServiceData = await res.json();
@@ -8,12 +8,14 @@
             }
         }
     }
-</script> 
+</script>  -->
 
 <script>
     import CollapsableBar from '$lib/collapsableBar.svelte';
-
-    export let blockServiceData;
+    //import json for testing purpose instead of pulling data from block service
+    import blockServiceData from '$lib/config/mockDataForAboutPage.json'
+    //const blockServiceDataU;
+    //export let blockServiceData;
 
     const ownerList = blockServiceData.multi_sign.owners
     ownerList.forEach((address)=>{
@@ -76,25 +78,26 @@
                 <div style="grid-column: 2/4; color: var(--primary-color)">contract</div>
                 {#if d.actions}
                     {#each registeredActions as actionList}
-                        <div style="grid-column: 1/2;">{actionList.action}</div>
-                        <div style="grid-column: 2/4;">{actionList.contract}</div>
+                        <div class="action-table">{actionList.action}</div>
+                        <div class="action-table2" >{actionList.contract}</div>
                     {/each}
-                {/if}
+                {/if} 
             </div>
         {/if}
 
         {#if proposalName=='Daily limit(s)'}
             <div class='dailylimit'>
                 <div style="grid-column: 1/2; color: var(--primary-color)">token</div>
-                <div style="grid-column: 2/4; color: var(--primary-color)">contract</div>
-                {#if d.daily_limit}
-                    {#each dailyLimits as limitList}
-                        <div style="grid-column: 1/2;">{limitList.token}</div>
-                        <div style="grid-column: 2/4;">{limitList.amount.__fixed__}</div>
-                    {/each}
-                {/if}
+                <div style="grid-column: 2/4; color: var(--primary-color)">limit</div>
+                    {#if d.daily_limit}
+                        {#each dailyLimits as limitList}
+                            <div class="daily-table">{limitList.token}</div>
+                            <div class="daily-table2" >{limitList.amount.__fixed__}</div>
+                        {/each}
+                    {/if}
+                
                     
-            </div>
+            </div> 
         {/if}
 
         {#if proposalName=='Req. confirms'}
@@ -129,6 +132,22 @@
         font-size: 0.65rem;
         justify-self: center;
     }
+    .action-table{
+        grid-column: 1/2;  
+        padding: 0.2rem 0.8rem 0.5rem 0.8rem; 
+        width: 70%; 
+        text-align:center; 
+        overflow-x:scroll;
+    }
+    .action-table2{
+        grid-column: 2/4;  
+        padding: 0.2rem 0.8rem 0.5rem 0.8rem; 
+        border-left: 1px solid grey;
+        width: 70%; 
+        text-align:center; 
+        overflow-x:scroll;
+    }
+    
     .dailylimit {
         display: grid;
         grid-template-columns: repeat(2,1fr);
@@ -142,6 +161,21 @@
     .dailylimit div {
         font-size: 0.65rem;
         justify-self: center;
+    }
+    .daily-table{
+        grid-column: 1/2;  
+        padding: 0.2rem 0.8rem 0.5rem 0.8rem; 
+        width: 70%; 
+        text-align:center; 
+        overflow-x:scroll;
+    }
+    .daily-table2{
+        grid-column: 2/4;  
+        padding: 0.2rem 0.8rem 0.5rem 0.8rem; 
+        border-left: 1px solid grey;
+        width: 70%; 
+        text-align:center; 
+        overflow-x:scroll;
     }
     ul {
 		padding: 0;
