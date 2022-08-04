@@ -15,8 +15,8 @@ export default {
   kit: {
     // default options are shown
     adapter: adapter({
-		edge: true,
-		split: false
+		edge: false,
+		split: true
 	})
   }
 };
