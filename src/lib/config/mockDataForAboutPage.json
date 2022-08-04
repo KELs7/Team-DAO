@@ -1,0 +1,6 @@
+{
+    "multi_sign": {
+            "owners":["sys","benjos","jeff","chris","19e5acf4295902e42af5ff38a0a9e476fc83bac3c1634d9898c1d9ee8804c5ae"],
+            "daily_limit":{"currency":{"__fixed__":"500"}, "rswp":{"__fixed__":"200"}},
+            "required":2
+}}
