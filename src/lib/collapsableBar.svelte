@@ -66,4 +66,11 @@
 	.rotate-icon {
 		transform: rotate(-180deg);
 	}
+	@media (max-width: 480px) {
+		.collapsableBar {
+			width: 80%;
+			height: 4em;
+			font-size: 0.77em;
+		}
+    }
 </style>
