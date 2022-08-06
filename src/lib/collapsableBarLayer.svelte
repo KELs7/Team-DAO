@@ -22,4 +22,11 @@
 		margin: auto;
 		margin-top: 0.2em;
 	}
+	@media (max-width: 480px) {
+		.layer{
+			width: 78%;
+			height: 4em;
+			font-size: 0.8em;
+		}
+    }
 </style>
