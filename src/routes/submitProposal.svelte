@@ -552,5 +552,12 @@
         display: inline;
         font-size: 0.6em;
     }
+    @media (max-width: 480px) {
+		.form{
+			width: 70%;
+			font-size: 0.75em;
+            
+		}
+    }
    
 </style>
