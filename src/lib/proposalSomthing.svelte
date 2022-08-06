@@ -96,7 +96,7 @@
         <li>
             <!--div style="display: flex; justify-content:space-around; align-content: center;"-->
             <div style="display:grid; grid-template-columns: 1fr 1fr 2fr;">
-                <div style="grid-column: 1/2; margin-left: 0.8em">{proposal.id}</div>
+                <div style="grid-column: 1/2; margin-left: 0.88em">{proposal.id}</div>
                 <div style="grid-column: 2/3">{proposal.type}</div>
                 <div style="grid-column: 3/5">
 
@@ -126,7 +126,7 @@
                         }</strong></div>
                     </button>
                     
-                    {#if proposal.iSubmitted}
+                    {#if true}
                         <button 
                             class="outlined primary white"
                             
@@ -167,19 +167,19 @@
         width: 100%;
         box-sizing: border-box;
         margin: auto;
-        font-size: 0.6em;
+        font-size: 0.7em;
         color: white;
         background-color: var(--panel-background-color);
-        padding: 0.8em 0 0 0;
+        padding: 0.98em 0 0 0;
     }
     .proposal-view{
         width: 100%;
         margin: 0;
-        padding: 1em;
+        padding: 2em 1em;
         /*margin-top: 0.5rem;*/
         background-color: #000000;
         font-family: 'Segoe UI';
-        font-size: 0.65em;
+        font-size: 1em;
         color: var(--flat-primary);
         border: 0.125em solid var(--flat-primary);
         box-sizing: border-box;
@@ -187,12 +187,13 @@
 
     }
     button {
-        font-size: 0.7em;
+        font-size: 0.77em;
         margin-left: 1em;
     }
     li {
+        display: inline-block;
         list-style: none;
-        padding: 0.8em 0 0.8em 0;
+        padding: 0.88em 0 0.88em 0;
         border-bottom: 0.0625em solid #000000;
     }
     @media (max-width: 480px) {
