@@ -96,7 +96,7 @@
         <li>
             <!--div style="display: flex; justify-content:space-around; align-content: center;"-->
             <div style="display:grid; grid-template-columns: 1fr 1fr 2fr;">
-                <div style="grid-column: 1/2; margin-left: 0.8rem">{proposal.id}</div>
+                <div style="grid-column: 1/2; margin-left: 0.8em">{proposal.id}</div>
                 <div style="grid-column: 2/3">{proposal.type}</div>
                 <div style="grid-column: 3/5">
 
@@ -155,7 +155,8 @@
     .container {
         width: 80%;
         margin: auto;
-        margin-top: 0.1rem;
+        margin-top: 0.1em;
+        user-select: none;
         overflow-x: scroll;
     }
     .inside-container {
@@ -166,32 +167,33 @@
         width: 100%;
         box-sizing: border-box;
         margin: auto;
-        font-size: 0.7rem;
+        font-size: 0.6em;
         color: white;
         background-color: var(--panel-background-color);
-        padding: 0.8rem 0 0 0;
+        padding: 0.8em 0 0 0;
     }
     .proposal-view{
         width: 100%;
         margin: 0;
-        padding: 1rem;
+        padding: 1em;
         /*margin-top: 0.5rem;*/
         background-color: #000000;
         font-family: 'Segoe UI';
-        font-size: 0.65rem;
+        font-size: 0.65em;
         color: var(--flat-primary);
-        border: 2px solid var(--flat-primary);
+        border: 0.125em solid var(--flat-primary);
         box-sizing: border-box;
         overflow:scroll;
 
     }
     button {
-        font-size: 0.58rem;
+        font-size: 0.7em;
+        margin-left: 1em;
     }
     li {
         list-style: none;
-        padding: 0.8rem 0 0.8rem 0;
-        border-bottom: 1px solid #000000;
+        padding: 0.8em 0 0.8em 0;
+        border-bottom: 0.0625em solid #000000;
     }
     @media (max-width: 480px) {
         .inside-container{

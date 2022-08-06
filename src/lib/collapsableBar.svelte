@@ -36,11 +36,13 @@
 		color: white;
 		position: relative;
 		width: 60%;
-		height: 3rem;
+		height: 3em;
 		margin: auto;
-		border-radius: 8px;
-		margin-top: 1rem;
-		font-size: 2.2vh;
+		/* border-radius: 8px; */
+		border-radius: 0.5em;
+		margin-top: 1em;
+		/* font-size: 2.2vh; */
+		font-size: 0.704em;
 		user-select: none;
 		cursor: pointer;
 	}
@@ -49,15 +51,16 @@
 		overflow: hidden;  
 		max-height: 0; 
 		transition: max-height 0.7s ease-out; 
-		font-size: 0.8rem;
+		font-size: 0.8em;
 		user-select: none;
 		cursor: pointer;
 	}
 	img {
 		position: absolute;
 		right: 0;
-		width: 30px;
-		margin-right: 0.5rem;
+		/* width: 30px; */
+		width: 1.875em;
+		margin-right: 0.5em;
 		transition: transform 500ms ease; 
 	}
 	.rotate-icon {

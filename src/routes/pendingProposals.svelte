@@ -54,36 +54,41 @@
 
 
 </script>
+<div class="container">
+	<div class='head-bar'>
+		<div style="grid-column: 1/2; margin-left: 0.8em">Id</div>
+		<!--p style="justify-self: start">Type</p-->
+		<div id="proposal-type" style="grid-column: 2/3">Type</div>
+		<div id="proposal-buttons" style="grid-column: 3/5">Actions</div>
+	</div>
 
-<div class='head-bar'>
-	<div style="grid-column: 1/2; margin-left: 0.8rem">Id</div>
-	<!--p style="justify-self: start">Type</p-->
-	<div id="proposal-type" style="grid-column: 2/3">Type</div>
-    <div id="proposal-buttons" style="grid-column: 3/5">Actions</div>
+
+	<!--display only if there are proposals-->
+	{#if proposalsFromBlockService}
+
+		<ProposalList proposals={proposalFetch}/>
+
+	{:else}
+		<div class='no-pending'>No pending proposals</div>
+	{/if}
 </div>
 
-
-<!--display only if there are proposals-->
-{#if proposalsFromBlockService}
-
-	<ProposalList proposals={proposalFetch}/>
-
-{:else}
-	<div class='no-pending'>No pending proposals</div>
-{/if}
-
 <style>
+	.container {
+		margin-top: 0.2em;
+	}
     .head-bar {
 		display:grid; 
 		grid-template-columns: 1fr 1fr 2fr;
 		align-items: center;
 		background-color: var(--panel-background-color); 
-		border-radius: 8px 8px 0 0; 
+		/* border-radius: 8px 8px 0 0;  */
+		border-radius: 0.5em 0.5em 0 0;
 		width: 80%;
 		margin: auto; 
-		font-size: 0.7rem; 
-		height: 2rem;
-		margin-top: 1rem;
+		font-size: 0.8em; 
+		height: 2em;
+		margin-top: 0.8em;
 		user-select: none;
 		cursor: pointer;
 	}
@@ -95,10 +100,10 @@
 		position: relative;
 		text-align: center;
 		width: 80%;
-		height: 2rem;
+		height: 2em;
 		margin: auto;
-		margin-top: 0.8rem;
-		font-size: 0.8rem;
+		margin-top: 0.8em;
+		font-size: 0.8em;
 		user-select: none;
 		cursor: pointer;
 	}

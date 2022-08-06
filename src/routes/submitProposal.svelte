@@ -505,12 +505,13 @@
         justify-content: space-between;
         align-items: flex-end;
         width: 50%;
-        font-size: 2vh;
+        /* font-size: 2vh; */
+        font-size: 0.727em;
         margin: auto;
-        border: 2px solid var(--flat-primary);
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        padding: 1.5rem;
+        border: 0.125em solid var(--flat-primary);
+        margin-top: 2em;
+        margin-bottom: 2em;
+        padding: 1.5em;
 	}
 
     .form{
@@ -519,12 +520,12 @@
         justify-content: space-between;
         align-items: flex-end;
         width: 50%;
-        font-size: 2vh;
+        font-size: 0.727em;
         margin: auto;
-        border: 2px solid var(--flat-primary);
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        padding: 1.5rem;
+        border: 0.125em solid var(--flat-primary);
+        margin-top: 2em;
+        margin-bottom: 2em;
+        padding: 1.5em;
     }
     
     form input {
@@ -545,11 +546,11 @@
         
         display: flex;
         flex-direction: column;
-        margin-top: 0.4rem;
+        margin-top: 0.4em;
     }
     .bulk-options label{
         display: inline;
-        font-size: 0.6rem;
+        font-size: 0.6em;
     }
    
 </style>

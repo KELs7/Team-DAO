@@ -13,12 +13,13 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 2vh;
-		border: 2px solid var(--flat-secondary);
+		/* font-size: 2vh; */
+		font-size: 0.727em;
+		border: 0.125em solid var(--flat-secondary);
 		position: relative;
 		width: 58%;
-		height: 3rem;
+		height: 3em;
 		margin: auto;
-		margin-top: 0.2rem;
+		margin-top: 0.2em;
 	}
 </style>

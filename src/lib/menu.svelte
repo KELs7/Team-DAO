@@ -116,9 +116,12 @@
 			</li>
 			
 		{/each}
-		<li><button class='walletConnect' on:click={attemptConnect}>{walletInfo}</button></li>
+		<!--li><button class='walletConnect' on:click={attemptConnect}>{walletInfo}</button></li-->
+		<div style="display: flex; width: 100%; justify-content:center;">
+			<button class='walletConnect' on:click={attemptConnect}>{walletInfo}</button>
+		</div>
 	</ul>
-	<div class="socials flex align-center space-between">
+	<div class="socials flex align-center space-around">
 		<a href="https://twitter.com/RSwapOfficial" >
 			<img src="icons/logo-telegram.svg" alt="Telegram" />
 		</a>
@@ -140,15 +143,17 @@
 		left: -72vw;
 		height: 100vh;
 		top: 14vh; 
-		font-size: 2.5vh;
+		/* font-size: 2.5vh; */
+		font-size: 0.8em;
 		font-weight: 600;
 		background-color: var(--panel-background-color);
 		transition: left 500ms ease;
 	}
 	.socials{
-        padding: 0 20vw;
+        /* padding: 0 20vw; */
+		padding: 0 3em;
         box-sizing: border-box;
-		margin-left: -1rem;
+		margin-left: -1em;
     }
     .socials > a > img{
         width: 7vh;
@@ -157,9 +162,11 @@
         width: 8vh;
     }
 	ul {
-		padding-left: 1.2rem;
+		/* padding-left: 1.2rem; */
+		padding-left: 1.2em;
 		list-style: none;
-		line-height: 4rem;
+		/* line-height: 4rem; */
+		line-height: 4em;
 		
 	}
 	li {
@@ -170,31 +177,40 @@
 		
 	}
     li a {
-		padding: 1.5vh 2.5vw;
+		/* padding: 1.5vh 2.5vw; */
+		padding: 0.48em 0.375em;
         text-decoration: none;
-		margin-right: 3vw;
+		/* margin-right: 3vw; */
+		margin-right: 0.45em;
     }
 	li:hover > a{
 		width: 100%;
         text-decoration: underline;
         background-color: var(--panel-background-highlight);
     }
+
 	.slide {
 		left: -1vh;
 	}
 	
 	img {
 		width: 5vh;
-		margin-right: 2.5vw;
+		/* margin-right: 2.5vw; */
+		margin-right: 0.375em;
 	}
 	.walletConnect{
 		background-color: var(--flat-primary);
-		border-radius: 10px;
-		width: 50vw;
-		line-height: 1rem; 
+		/* border-radius: 10px; */
+		font-size: 1em;
+		border-radius: 1em;
+		/* width: 50vw; */
+		/* width: 7.5em; */
+		/* line-height: 1rem;  */
+		line-height: 1em;
 		text-align: center;
 		color: var(--panel-background-color);
-		padding: 0.5rem;
+		/* padding: 0.5rem; */
+		padding: 0.8em 2.8em;
 	}
 	.walletConnect:hover{
 		color: var(--secondary-color);

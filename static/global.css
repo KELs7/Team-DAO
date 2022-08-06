@@ -1,3 +1,7 @@
+html {
+	font-size: 6.25%;
+}
+
 /* poppins font */
 @font-face
 {
@@ -292,10 +296,12 @@ body {
     margin: 0;
     padding: 0;
     width: 100vw;
+	box-sizing: border-box;
     background-color: var(--background-color);
     font-family: 'Poppins-Regular';
     font-style: normal;
-    font-size: var(--units-08vw);
+    /* font-size: var(--units-08vw); */
+	font-size: 16rem;
 	font-weight: 200;
     color: var(--font-primary-color);
 }

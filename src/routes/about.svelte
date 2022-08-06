@@ -110,38 +110,38 @@
 
 <style>
     .owner-list {
-        border: 2px solid var(--primary-color);
+        border: 0.125em solid var(--primary-color);
         position: relative;
         width: 58%;
         margin: auto;
-        margin-top: 0.2rem;
+        margin-top: 0.2em;
         text-align: center;
         overflow: auto;
     }
     .actions {
         display: grid;
         grid-template-columns: repeat(2,1fr);
-        border: 2px solid var(--flat-secondary);
+        border: 0.125em solid var(--flat-secondary);
         position: relative;
         width: 58%;
-        padding: 0.6rem 0 0.6rem 0;
+        padding: 0.6em 0 0.6em 0;
         margin: auto;
-        margin-top: 0.2rem; 
+        margin-top: 0.2em; 
     }
     .actions div {
-        font-size: 0.65rem;
+        font-size: 0.65em;
         justify-self: center;
     }
     .action-table{
         grid-column: 1/2;  
-        padding: 0.2rem 0.8rem 0.5rem 0.8rem; 
+        padding: 0.2em 0.8em 0.5em 0.8em; 
         width: 70%; 
         text-align:center; 
         overflow-x:scroll;
     }
     .action-table2{
         grid-column: 2/4;  
-        padding: 0.2rem 0.8rem 0.5rem 0.8rem; 
+        padding: 0.2em 0.8em 0.5em 0.8em; 
         border-left: 1px solid grey;
         width: 70%; 
         text-align:center; 
@@ -154,25 +154,26 @@
         border: 2px solid var(--flat-secondary);
         position: relative;
         width: 58%;
-        padding: 0.6rem 0 0.6rem 0;
+        padding: 0.6em 0 0.6em 0;
         margin: auto;
-        margin-top: 0.2rem; 
+        margin-top: 0.2em; 
     }
     .dailylimit div {
-        font-size: 0.65rem;
+        font-size: 0.65em;
         justify-self: center;
     }
     .daily-table{
         grid-column: 1/2;  
-        padding: 0.2rem 0.8rem 0.5rem 0.8rem; 
+        padding: 0.2em 0.8em 0.5em 0.8em; 
         width: 70%; 
         text-align:center; 
         overflow-x:scroll;
     }
     .daily-table2{
         grid-column: 2/4;  
-        padding: 0.2rem 0.8rem 0.5rem 0.8rem; 
-        border-left: 1px solid grey;
+        padding: 0.2em 0.8em 0.5em 0.8em; 
+        /* border-left: 1px solid grey; */
+        border-left: 0.0625em solid grey;
         width: 70%; 
         text-align:center; 
         overflow-x:scroll;
@@ -180,7 +181,7 @@
     ul {
 		padding: 0;
 		list-style: none;
-		line-height: 1.2rem;
+		line-height: 1.2em;
 		color: #ffffff;
 		font-weight: bold;
 	}
