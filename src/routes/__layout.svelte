@@ -44,7 +44,8 @@
 	}
 	@media (max-width: 480px) {
 		main {
-			padding: 30vh 5vw 15vw;
+			/* padding: 30vh 5vw 15vw; */
+			padding: 25vh 3.3vw 10vw;
 		}
 		/* main.connected{
 			padding: 27vh 5vw 15vw;
