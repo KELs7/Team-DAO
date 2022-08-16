@@ -722,7 +722,9 @@ img.sort-arrow.flip{
 		overflow-x: hidden;
 	}
 	table{
-		width: 653.656px;
+		/* width: 653.656px; */
+		/* width: 653.656rem */
+		width: 300rem
 	}
 	.table-wrapper{
 		overflow-x: scroll;
