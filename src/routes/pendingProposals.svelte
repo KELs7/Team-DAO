@@ -54,14 +54,14 @@
 
 
 </script>
-<div class="container">
+<!--div class="container">
 	<div class='head-bar'>
 		<div style="grid-column: 1/2; margin-left: 0.8em">Id</div>
-		<!--p style="justify-self: start">Type</p-->
+		<p style="justify-self: start">Type</p>
 		<div id="proposal-type" style="grid-column: 2/3">Type</div>
 		<div id="proposal-buttons" style="grid-column: 3/5">Actions</div>
 	</div>
-
+</div-->
 
 	<!--display only if there are proposals-->
 	{#if proposalsFromBlockService}
@@ -71,7 +71,7 @@
 	{:else}
 		<div class='no-pending'>No pending proposals</div>
 	{/if}
-</div>
+
 
 <style>
 	.container {
