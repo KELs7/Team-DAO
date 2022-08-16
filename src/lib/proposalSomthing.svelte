@@ -89,16 +89,16 @@
 
 <div class='container'>
 
-    <ul class="inside-container">
+    <!-- <ul class="inside-container">
 
         {#each proposals as proposal}
 
         <li>
-            <!--div style="display: flex; justify-content:space-around; align-content: center;"-->
-            <div style="display:grid; grid-template-columns: 1fr 1fr 2fr;">
-                <div style="grid-column: 1/2; margin-left: 0.88em">{proposal.id}</div>
-                <div style="grid-column: 2/3">{proposal.type}</div>
-                <div style="grid-column: 3/5">
+            <div style="display: flex; justify-content:space-around; align-content: center;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr 2fr">
+                <div style="grid-column: 1/2; margin-left: 0.88em; outline: 2px solid blue">{proposal.id}</div>
+                <div style="grid-column: 2/3; outline: 2px solid blue">{proposal.type}</div>
+                <div style="grid-column: 3/5; outline: 2px solid blue">
 
                     <button 
                         class="outlined primary white"
@@ -148,7 +148,68 @@
             </div>
         {/if}
         {/each}
-    </ul>
+    </ul> -->
+
+    <table >
+        <thead style="font-size: 0.8em; border-bottom: 2px solid black">
+            <tr>
+                <th>ID</th>
+                <th>TYPE</th>
+                <th>ACTIONS</th>
+                
+            </tr>
+            <!--div style="width: 100%; height: 2px; background-color: #000000"></div-->
+        </thead>
+        <tbody style="font-size: 0.75em">
+            {#each proposals as proposal}
+                <tr>
+                    <td>{proposal.id}</td>
+                    <td>{proposal.type} </td>
+                    <td>
+                        <button 
+                        class="outlined primary white"
+                        id = {proposal.id}
+                        on:click={()=>{
+                            view==proposal.id?viewStateBtn='view':viewStateBtn='close';
+                            if(view==proposal.id){
+                                view=0;
+                            }else{
+                                view=proposal.id;
+                            }
+                        }}
+                        >
+                            <div><strong>{viewStateBtn}</strong></div>
+                        </button>
+
+                                        
+                        <button 
+                            class="outlined primary white"
+                            
+                            on:click|once={confirm}
+                            bind:this={confirmBtns[proposal.id]}
+                            ><div><strong id = {proposal.id}>{
+                                confirmBtnLabel[proposal.id]?confirmBtnLabel[proposal.id]:`confirm ${proposal.confirmNum}`
+                            }</strong></div>
+                        </button>
+                        
+                        {#if true}
+                            <button 
+                                class="outlined primary white"
+                                
+                                on:click|once={revoke}
+                                bind:this={revokeBtns[proposal.id]}
+                            ><div><strong id = {proposal.id}>{
+                                revokeBtnLabel[proposal.id]?revokeBtnLabel[proposal.id]:'revoke'
+                                }</strong></div>
+                            </button>
+                        
+                        {/if} 
+                    </td>
+                </tr>
+            {/each}
+        </tbody>
+    </table>
+
 </div>
 
 <style>
@@ -159,6 +220,9 @@
         user-select: none;
         overflow-x: scroll;
     }
+    /* thead th {
+        border-bottom: 1px solid #000000;
+    } */
     .inside-container {
         display: flex;
         flex-direction: column;
@@ -188,17 +252,17 @@
     }
     button {
         font-size: 0.77em;
-        margin-left: 1em;
+        margin-right: 1em;
     }
     li {
-        display: inline-block;
+        /* display: inline-block; */
         list-style: none;
         padding: 0.88em 0 0.88em 0;
         border-bottom: 0.0625em solid #000000;
     }
     @media (max-width: 480px) {
         .inside-container{
-            width: 100vw; 
+            width: 160vw; 
 
         }
     }
