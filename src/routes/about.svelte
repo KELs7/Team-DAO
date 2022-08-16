@@ -20,7 +20,7 @@
     const ownerList = blockServiceData.multi_sign.owners
     ownerList.forEach((address)=>{
         let index = ownerList.indexOf(address);
-        let shortenedAddress = address.substring(0,7) + ' . . . ' + address.substring(60,64)
+        let shortenedAddress = address.substring(0,7).concat(' . . . ' , address.substring(60,64))
         ownerList[index] = shortenedAddress
     })
 
@@ -101,7 +101,7 @@
         {/if}
 
         {#if proposalName=='Req. confirms'}
-            <div class='owner-list' style="padding: 0.6rem 0 0.6rem 0;">
+            <div class='owner-list' style="padding: 0.6em 0">
                 {requiredConfirmations}
             </div>
         {/if}
@@ -112,7 +112,8 @@
     .owner-list {
         border: 0.125em solid var(--primary-color);
         position: relative;
-        width: 58%;
+        /* width: 58%; */
+        width: 78%;
         margin: auto;
         margin-top: 0.2em;
         text-align: center;
@@ -123,13 +124,15 @@
         grid-template-columns: repeat(2,1fr);
         border: 0.125em solid var(--flat-secondary);
         position: relative;
-        width: 58%;
+        /* width: 58%; */
+        width: 78%;
         padding: 0.6em 0 0.6em 0;
         margin: auto;
         margin-top: 0.2em; 
     }
     .actions div {
-        font-size: 0.65em;
+        /* font-size: 0.65em; */
+        font-size: 0.8em;
         justify-self: center;
     }
     .action-table{
@@ -153,13 +156,14 @@
         grid-template-columns: repeat(2,1fr);
         border: 2px solid var(--flat-secondary);
         position: relative;
-        width: 58%;
+        /* width: 58%; */
+        width: 78%;
         padding: 0.6em 0 0.6em 0;
         margin: auto;
         margin-top: 0.2em; 
     }
     .dailylimit div {
-        font-size: 0.65em;
+        font-size: 0.8em;
         justify-self: center;
     }
     .daily-table{
