@@ -384,32 +384,32 @@ a.link-primary:hover{
 
 table{
 	background-color: var(--panel-background-color);
-	width: 100%;
+	width: 100%; 
 	font-weight:200;
-	font-size: var(--units-1_16vw);
+	/* font-size: var(--units-1_16vw); */
 	border-spacing: 0;
 	border-radius: var(--units-07vw);
-    padding: var(--units-07vw) 0 var(--units-2_5vw);
+    padding: var(--units-07vw) 0 var(--units-2_5vw); 
 	box-shadow: var(--panel-box-shadow);
 
 }
 
 th{
-    padding: var(--units-05vw) 0 var(--units-1_2vw) var(--units-2vw);
+    padding: var(--units-05vw) 0 var(--units-1_2vw) var(--units-2vw); 
 	white-space: nowrap;
 }
 
 td{
     padding: var(--units-05vw) 0 var(--units-05vw) var(--units-2vw);
-	white-space: nowrap;
+	white-space: nowrap; 
 }
 
 tr > td:last-child {
-	padding-right: var(--units-1vw);
+	padding-right: var(--units-1vw); 
 }
 
 tr > th:last-child {
-	padding-right: var(--units-1vw);
+	padding-right: var(--units-1vw); 
 }
 
 table, th, td {
@@ -722,9 +722,9 @@ img.sort-arrow.flip{
 		overflow-x: hidden;
 	}
 	table{
-		/* width: 653.656px; */
-		/* width: 653.656rem */
-		width: 300rem
+		/* width: 653.656rem  */
+		width: 420rem;
+
 	}
 	.table-wrapper{
 		overflow-x: scroll;
