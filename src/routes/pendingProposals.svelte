@@ -14,6 +14,7 @@
 <script>
 	import ProposalList from '$lib/proposalSomthing.svelte';
 	import { walletAddress } from '$lib/stores/controllerStore.js';
+	import { proposalsStore } from '$lib/stores/proposals.js';
 	import blockServiceData from'$lib/config/mockDataForPendingPage.json';
 
 	// import { io } from 'socket.io-client';
@@ -30,7 +31,10 @@
 	const noData =false;
 
 	const proposalsFromBlockService = blockServiceData.multi_sign.proposal;
-	
+
+	// write proposals to svelte store
+	proposalsStore.set(proposalsFromBlockService)
+
 	let resultMessage = '';
 	let errorInfo = '';
 	let showNotification = false;
