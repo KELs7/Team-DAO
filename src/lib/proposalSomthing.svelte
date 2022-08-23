@@ -3,6 +3,8 @@
     import { lwc } from '$lib/stores/controllerStore.js';
     import { resultMessage, errorInfo, link, showNotification } from '$lib/stores/toasterInfo.js';
     import { confirmProposal, revokeProposal} from '../js/funcs.js'
+    import { proposalsStore } from '$lib/stores/proposals.js';
+    import Modal from './components/modal.svelte';
     import { fly } from 'svelte/transition';
 
     export let proposals = '';
@@ -18,6 +20,8 @@
 
     //store current proposal id
     let proposalId;
+
+    let showModal = false;
    
 
     const handleTxResults = (txResults)=>{
@@ -170,12 +174,8 @@
                         class="outlined primary white"
                         id = {proposal.id}
                         on:click={()=>{
-                            view==proposal.id?viewStateBtn='view':viewStateBtn='close';
-                            if(view==proposal.id){
-                                view=0;
-                            }else{
-                                view=proposal.id;
-                            }
+                            view=proposal.id;
+                            showModal = true;
                         }}
                         >
                             <div><strong>{viewStateBtn}</strong></div>
@@ -212,6 +212,11 @@
 
 </div>
 
+{#if showModal}
+<Modal
+    proposal = {$proposalsStore[view]}
+/>
+{/if}
 <style>
     .container {
         width: 80%;
