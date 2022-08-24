@@ -4,6 +4,7 @@
 	import { errorInfo, showNotification } from '$lib/stores/toasterInfo.js';
 	import WalletController from '../js/walletController';
 	import { page } from '$app/stores';
+	import { fly } from 'svelte/transition';
 	
 	let walletInfo = 'connect';
 	let lamdenWalletController;
@@ -78,7 +79,9 @@
 
 </script>
 
-<div class="mobile slideNav {s?'slide':''}">
+{#if s}
+
+<div transition:fly='{{x:-100, duration: 600}}' class="mobile slideNav">
 	
 	<ul>
 		{#each menuItems as menuItem}
@@ -87,7 +90,7 @@
 				class="flex align-center"
 				class:text-gradient-primary={$page.url.pathname == menuItem.route}
 				on:click={()=> {
-					setTimeout(()=> s = false, 400);	
+					setTimeout(()=> s = false, 300);	
 				}}
 			>
 			
@@ -101,7 +104,7 @@
 						{menuItem.label}
 					{/if}
 				</a>
-			{:else}
+				{:else}
 				<a href={menuItem.route} class="flex align-center">
 					{#if $page.url.pathname == menuItem.route}
 						<img src={menuItem.iconColor} alt={menuItem.label}>
@@ -134,20 +137,22 @@
 	</div>
 </div>
 
+{/if}
+
 <style>
 	.slideNav {
 		margin: 0;
 		position: fixed;
 		z-index: 10; 
 		width: 69.6vw;
-		left: -72vw;
+		/* left: -72vw; */
 		height: 100vh;
 		top: 14vh; 
 		/* font-size: 2.5vh; */
 		font-size: 0.8em;
 		font-weight: 600;
 		background-color: var(--panel-background-color);
-		transition: left 500ms ease;
+		/* transition: left 500ms ease; */
 	}
 	.socials{
         /* padding: 0 20vw; */
@@ -188,10 +193,6 @@
         text-decoration: underline;
         background-color: var(--panel-background-highlight);
     }
-
-	.slide {
-		left: -1vh;
-	}
 	
 	img {
 		width: 5vh;
