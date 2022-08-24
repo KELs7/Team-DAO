@@ -17,7 +17,7 @@
 
 <Header on:click={()=>s=!s}/>
 <LeftMenu />
-<Menu {s}/>
+<Menu bind:s/>
 
 <main>
 	<slot/>
