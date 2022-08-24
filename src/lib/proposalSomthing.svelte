@@ -23,7 +23,6 @@
 
     let showModal = false;
    
-
     const handleTxResults = (txResults)=>{
         const { data } = txResults
         let txR = data
@@ -212,11 +211,11 @@
 
 </div>
 
-{#if showModal}
 <Modal
+    bind:showModal
     proposal = {$proposalsStore[view]}
 />
-{/if}
+
 <style>
     .container {
         width: 80%;
