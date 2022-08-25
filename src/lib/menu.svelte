@@ -90,17 +90,17 @@
 				class="flex align-center"
 				class:text-gradient-primary={$page.url.pathname == menuItem.route}
 				on:click={()=> {
-					setTimeout(()=> s = false, 300);	
+					setTimeout(()=> s = false, 350);	
 				}}
 			>
 			
 			{#if menuItem.label=='Pending Proposals' || 'About'}
-				<a sveltekit:prefetch href={menuItem.route} class="flex align-center">
+				<a href={menuItem.route} class="flex align-center">
 					{#if $page.url.pathname == menuItem.route}
 						<img src={menuItem.iconColor} alt={menuItem.label}>
 						{menuItem.label}
 					{:else}	
-						<img src={menuItem.icon} alt={menuItem.label}>
+						<img src={menuItem.icon} alt="{menuItem.label}">
 						{menuItem.label}
 					{/if}
 				</a>
