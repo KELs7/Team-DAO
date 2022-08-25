@@ -74,8 +74,10 @@
 
     //lamdenWalletController listener here
     onMount(()=>{
-        $lwc.events.on('txStatus', handleTxResults)
-    
+
+        if($lwc){
+            $lwc.events.on('txStatus', handleTxResults)
+        }
     })
     
     const submitAddOwnerPropsl = ()=>{
