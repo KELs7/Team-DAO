@@ -201,16 +201,11 @@
 	}
 	.walletConnect{
 		background-color: var(--flat-primary);
-		/* border-radius: 10px; */
 		font-size: 1em;
 		border-radius: 1em;
-		/* width: 50vw; */
-		/* width: 7.5em; */
-		/* line-height: 1rem;  */
 		line-height: 1em;
 		text-align: center;
 		color: var(--panel-background-color);
-		/* padding: 0.5rem; */
 		padding: 0.8em 2.8em;
 	}
 	.walletConnect:hover{
