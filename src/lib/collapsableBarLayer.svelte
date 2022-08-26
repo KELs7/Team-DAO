@@ -14,19 +14,19 @@
 		justify-content: center;
 		align-items: center;
 		/* font-size: 2vh; */
-		font-size: 0.727em;
+		/* font-size: 0.727em; */
+		font-size: 0.8em;
 		border: 0.125em solid var(--flat-secondary);
 		position: relative;
-		width: 58%;
-		height: 3em;
+		width: 48%;
+		height: 4em;
 		margin: auto;
 		margin-top: 0.2em;
 	}
 	@media (max-width: 480px) {
 		.layer{
 			width: 78%;
-			height: 4em;
-			font-size: 0.8em;
+			
 		}
     }
 </style>
