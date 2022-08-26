@@ -51,7 +51,8 @@
         {/each}
         
         <!--ConnectButton /-->
-        <div class='walletConnect'>{walletInfo}</div>
+        <!--div class='walletConnect'>{walletInfo}</div-->
+        <button class='walletConnect' on:click>{walletInfo}</button>
     </ul>
 </nav>
 
@@ -62,6 +63,7 @@
         left: 0;
         z-index: 99;
         width: 5.2vw;
+        font-size: 0.8em;
         min-width: 40px;
         height: 100vh;
         background-color: var(--panel-background-color);
@@ -106,14 +108,16 @@
     }
     .walletConnect{
 		background-color: var(--flat-primary);
-		border-radius: 10px;
+        margin-top: 1em;
+		border-radius: 8px;
 		width: 100%;
-		line-height: 1rem; 
+        font-size: 0.88em;
+		line-height: 1em; 
 		text-align: center;
         user-select: none;
         -moz-user-select: none;
 		color: var(--panel-background-color);
-		padding: 0.4rem 0;
+		padding: 0.6em 0; 
 	}
 	.walletConnect:hover{
 		color: var(--secondary-color);
