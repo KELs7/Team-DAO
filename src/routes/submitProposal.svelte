@@ -521,8 +521,8 @@
         grid-template-columns: repeat(2, 1fr);
         justify-content: space-between;
         align-items: flex-end;
-        width: 50%;
-        font-size: 0.727em;
+        width: 42%;
+        font-size: 0.75em;
         margin: auto;
         border: 0.125em solid var(--flat-primary);
         margin-top: 2em;
@@ -557,7 +557,7 @@
     @media (max-width: 480px) {
 		.form{
 			width: 70%;
-			font-size: 0.75em;
+			
             
 		}
     }
