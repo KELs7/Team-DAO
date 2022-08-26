@@ -112,8 +112,8 @@
     .owner-list {
         border: 0.125em solid var(--primary-color);
         position: relative;
-        /* width: 58%; */
-        width: 78%;
+        /* width: 78%; */
+        width: 48%;
         margin: auto;
         margin-top: 0.2em;
         text-align: center;
@@ -124,8 +124,8 @@
         grid-template-columns: repeat(2,1fr);
         border: 0.125em solid var(--flat-secondary);
         position: relative;
-        /* width: 58%; */
-        width: 78%;
+        /* width: 78%; */
+        width: 48%;
         padding: 0.6em 0 0.6em 0;
         margin: auto;
         margin-top: 0.2em; 
@@ -156,8 +156,8 @@
         grid-template-columns: repeat(2,1fr);
         border: 2px solid var(--flat-secondary);
         position: relative;
-        /* width: 58%; */
-        width: 78%;
+        /* width: 78%; */
+        width: 48%;
         padding: 0.6em 0 0.6em 0;
         margin: auto;
         margin-top: 0.2em; 
@@ -189,4 +189,15 @@
 		color: #ffffff;
 		font-weight: bold;
 	}
+    @media (max-width: 480px) {
+		.owner-list { 
+			width: 78%;
+		}
+        .actions {
+            width: 78%;
+        }
+        .dailylimit {
+            width: 78%;
+        }
+    }
 </style>
