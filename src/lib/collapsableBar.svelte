@@ -35,14 +35,15 @@
 		background-color: var(--panel-background-color);
 		color: white;
 		position: relative;
-		width: 60%;
-		height: 3em;
+		width: 50%;
+		height: 4em;
 		margin: auto;
 		/* border-radius: 8px; */
 		border-radius: 0.5em;
 		margin-top: 1em;
 		/* font-size: 2.2vh; */
 		font-size: 0.704em;
+		/* font-size: 0.77em; */
 		user-select: none;
 		cursor: pointer;
 	}
@@ -69,8 +70,6 @@
 	@media (max-width: 480px) {
 		.collapsableBar {
 			width: 80%;
-			height: 4em;
-			font-size: 0.77em;
 		}
     }
 </style>
