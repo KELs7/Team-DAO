@@ -118,6 +118,17 @@
         margin-top: 0.2em;
         text-align: center;
         overflow: auto;
+        scrollbar-color: var(--flat-primary) var(--panel-background-color); 
+    }
+    .owner-list::-webkit-scrollbar{
+        height: auto;
+    }   
+    .owner-list::-webkit-scrollbar-thumb{
+        background-color: var(--flat-primary);
+        border-radius: 5px;
+    }
+    .owner-list::-webkit-scrollbar-corner{
+        display: none;
     }
     .actions {
         display: grid;
@@ -141,6 +152,17 @@
         width: 70%; 
         text-align:center; 
         overflow-x:scroll;
+        scrollbar-color: var(--flat-primary) var(--panel-background-color); 
+    }
+    .action-table::-webkit-scrollbar{
+        height: auto;
+    }   
+    .action-table::-webkit-scrollbar-thumb{
+        background-color: var(--flat-primary);
+        border-radius: 5px;
+    }
+    .action-table::-webkit-scrollbar-corner{
+        display: none;
     }
     .action-table2{
         grid-column: 2/4;  
@@ -149,6 +171,17 @@
         width: 70%; 
         text-align:center; 
         overflow-x:scroll;
+        scrollbar-color: var(--flat-primary) var(--panel-background-color); 
+    }
+    .action-table2::-webkit-scrollbar{
+        height: auto;
+    }   
+    .action-table2::-webkit-scrollbar-thumb{
+        background-color: var(--flat-primary);
+        border-radius: 5px;
+    }
+    .action-table2::-webkit-scrollbar-corner{
+        display: none;
     }
     
     .dailylimit {
@@ -172,6 +205,17 @@
         width: 70%; 
         text-align:center; 
         overflow-x:scroll;
+        scrollbar-color: var(--flat-primary) var(--panel-background-color); 
+    }
+    .daily-table::-webkit-scrollbar{
+        height: auto;
+    }   
+    .daily-table::-webkit-scrollbar-thumb{
+        background-color: var(--flat-primary);
+        border-radius: 5px;
+    }
+    .daily-table::-webkit-scrollbar-corner{
+        display: none;
     }
     .daily-table2{
         grid-column: 2/4;  
@@ -181,6 +225,17 @@
         width: 70%; 
         text-align:center; 
         overflow-x:scroll;
+        scrollbar-color: var(--flat-primary) var(--panel-background-color); 
+    }
+    .daily-table2::-webkit-scrollbar{
+        height: auto;
+    }   
+    .daily-table2::-webkit-scrollbar-thumb{
+        background-color: var(--flat-primary);
+        border-radius: 5px;
+    }
+    .daily-table2::-webkit-scrollbar-corner{
+        display: none;
     }
     ul {
 		padding: 0;
