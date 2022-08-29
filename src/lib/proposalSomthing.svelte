@@ -222,8 +222,20 @@
         margin: auto;
         margin-top: 0.1em;
         user-select: none;
-        overflow-x: scroll;
+        overflow: scroll;
+        scrollbar-color: var(--flat-primary) var(--panel-background-color); 
     }
+    .container::-webkit-scrollbar{
+        height: auto;
+    }   
+    .container::-webkit-scrollbar-thumb{
+        background-color: var(--flat-primary);
+        border-radius: 5px;
+    }
+    .container::-webkit-scrollbar-corner{
+        display: none;
+    }
+    
     /* thead th {
         border-bottom: 1px solid #000000;
     } */
@@ -254,6 +266,7 @@
         overflow:scroll;
 
     }
+    
     button {
         font-size: 0.77em;
         margin-right: 1em;
