@@ -11,7 +11,9 @@
 	if(secondLayerEle.style.maxHeight){
 		secondLayerEle.style.maxHeight = null;
 	}else{
-		secondLayerEle.style.maxHeight = secondLayerEle.scrollHeight + 'px';
+		//secondLayerEle.style.maxHeight = secondLayerEle.scrollHeight + 'px';
+		let scrollHeight = parseInt(secondLayerEle.scrollHeight) + 192
+		secondLayerEle.style.maxHeight = scrollHeight.toString() + 'px';
 }}}>
 	{barName}
 	<img src='icons/arrow-down-circle-coloured.svg'
@@ -49,7 +51,7 @@
 	}
 	.second-layer {
 		color: white; 
-		overflow: hidden;  
+		overflow: hidden;    
 		max-height: 0; 
 		transition: max-height 0.7s ease-out; 
 		font-size: 0.8em;
