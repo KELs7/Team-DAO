@@ -15,6 +15,7 @@
 		if(v.length==64){
 			authShow = false;
 			dispatch('err', '')
+			err = '';
 		}
 		if(v.length<64){
 			authShow = true;
@@ -29,14 +30,15 @@
 		if(!v){
 			authShow = false;
 			dispatch('err','inactive')
+			err = '';
 		}
 		
 	}
 </script>
 
 <input bind:value={v} on:input={check}/>
-{#if authShow}
-<p style='color:red'>{err}</p>
+{#if err}
+	<p style='color:red'>{err}</p>
 {/if}
 
 <style>
@@ -51,6 +53,6 @@
         border-right-style: hidden;
 	}
 	p {
-		font-size: 0.56rem;
+		font-size: 0.7em;
 	}
 </style>
