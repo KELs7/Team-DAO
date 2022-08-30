@@ -17,6 +17,7 @@
         if(v.match(pattern)){
 			authShow = false;
 			dispatch('err', '')
+			err = ''
         }
         // if(v.match(pattern2)){
 		// 	authShow = true;
@@ -26,6 +27,7 @@
 		if(!v){
 			authShow = false;
 			dispatch('err','inactive')
+			err = 'inactive'
 		}
 		
 	}
@@ -48,6 +50,6 @@
         border-right-style: hidden;
 	}
 	p {
-		font-size: 0.56rem;
+		font-size: 0.7em;
 	}
 </style>
