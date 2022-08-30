@@ -169,8 +169,8 @@
         return sendPropsl('extAction', args)
     }
 
-    const grabInputError = (e)=>{
-	  inputError = e.detail
+     const grabInputError = (e)=>{
+	   inputError = e.detail
 	}
 
     
@@ -203,48 +203,59 @@
                     {/if}
 
                     {#if stateProposal == 'replace owner'}
-                    <form  id='replaceOwner'transition:fly='{{y:-20, duration: 600}}'
+                    <div class='form'  id='replaceOwner'transition:fly='{{y:-20, duration: 600}}'
                     >
                     	<div style="grid-column: 1/2">
-	                    <label>
+	                    <label for='replaceOwner_newOwner'>
 	                        new owner
-	                        <input bind:value={replaceOwner_newOwner}/>
+                            <InputAV
+                                    on:err={grabInputError}
+                                    bind:v={replaceOwner_newOwner}
+                            />
 	                    </label>
 
-	                    <label>
+	                    <label for='replaceOwner_existing'>
 	                        exist. owner
-	                        <input bind:value={replaceOwner_existing}/>
+                            <InputAV
+                                    on:err={grabInputError}
+                                    bind:v={replaceOwner_existing}
+                            />
 	                    </label>
                         </div>
 
                         <div style="grid-column: 2/3; justify-self: end">
                             <SubmitButton 
-                                btnType='submit'
-                                btnLabel='submit'/>
+                                btnLabel={btnl}
+                                error={inputError}
+                                on:click={submitReplaceOwnerPropsl}/>
                         </div>
-                    </form>
+                    </div>
                     {/if}
 
                     {#if stateProposal == 'remove owner'}
-                    <form  id='removeOwner'transition:fly='{{y:-20, duration: 600}}'
+                    <div  class='form' id='removeOwner' transition:fly='{{y:-20, duration: 600}}'
                     >
                     	<div style="grid-column: 1/2">
-                            <label>
+                            <label for='removeOwner_address'>
                                 owner wallet
-                                <input bind:value={removeOwner_address}/>
-                             </label>
+                                <InputAV
+                                    on:err={grabInputError}
+                                    bind:v={removeOwner_address}
+                            />
+                            </label>
                        </div>
                        
                         <div style="grid-column: 2/3; justify-self: end">
                             <SubmitButton 
-                                btnType='submit'
-                                btnLabel='submit'/>
+                                btnLabel={btnl}
+                                error={inputError}
+                                on:click={submitRemoveOwnerPropsl}/>
                         </div>
-                    </form>
+                    </div>
                     {/if}
 
                     {#if stateProposal == 'register action'}
-                    <form  id='registerAction' transition:fly='{{y:-20, duration: 600}}'
+                    <div class='form' id='registerAction' transition:fly='{{y:-20, duration: 600}}'
                     >
                         <div style="grid-column: 1/2">
                             <label>
@@ -260,14 +271,14 @@
                         
                         <div style="grid-column: 2/3; justify-self: end">
                             <SubmitButton 
-                                btnType='submit'
-                                btnLabel='submit'/>
+                                btnLabel={btnl}
+                                on:click={submitRegisterActionPropsl}/>
                         </div>
-                    </form>
+                    </div>
                     {/if}
 
                     {#if stateProposal == 'unregister action'}
-                    <form  id='unregisterAction' transition:fly='{{y:-20, duration: 600}}'
+                    <div class='form' id='unregisterAction' transition:fly='{{y:-20, duration: 600}}'
                     >
                     	<div style="grid-column: 1/2">
                             <label>
@@ -278,14 +289,14 @@
                         
                         <div style="grid-column: 2/3; justify-self: end">
                             <SubmitButton 
-                                btnType='submit'
-                                btnLabel='submit'/>
+                                btnLabel={btnl}
+                                on:click={submitUnregisterActionPropsl}/>
                         </div>
-                    </form>
+                    </div>
                     {/if}
 
                     {#if stateProposal == 'change requirement'}
-                    <div class='form'>
+                    <div class='form' transition:fly='{{y:-20, duration: 600}}'>
                     	<div style="grid-column: 1/2">
                             <label for='confirms'>
                                 confirm no.
@@ -306,14 +317,11 @@
                     {/if}
 
                     {#if stateProposal == 'change daily limit'}
-                    <div class='form'>
+                    <div class='form' transition:fly='{{y:-20, duration: 600}}'>
                     	<div style="grid-column: 1/2">
                             <label for="tokenDailyLimit">
                                 token
-                                <InputTKV
-                                    on:err={grabInputError}
-                                    bind:v={changeDailyLimit_token}
-                                />
+                                <input bind:value={changeDailyLimit_token}/>
                             </label>
 
                             <label for='dailyLimit'>
@@ -341,20 +349,23 @@
             {#each lst001Proposals as lst001Proposal}
             <CollapsableBarLayer layerName={lst001Proposal}>
                 {#if lst001Proposal == 'transfer'}
-                    <form  id='transfer' transition:fly='{{y:-20, duration: 600}}'
+                    <div class='form' id='transfer' transition:fly='{{y:-20, duration: 600}}'
                     >
                     	<div style='display: grid; grid-column: 1/2'>
-                            <label>
+                            <label for='transfer_tokenName'>
                                 token
                                 <input bind:value={transfer_tokenName}>
                             </label>
                         
-                            <label>
+                            <label for='transfer_amount'>
                                 amount
-                                <input bind:value={transfer_amount}>
+                                <InputDV
+                                    on:err={grabInputError}
+                                    bind:v={transfer_amount}
+                                />
                             </label>
 
-                            <label>
+                            <label for='transfer_to'>
                                 to
                                 <input bind:value={transfer_to}>
                             </label>
@@ -362,27 +373,31 @@
 			
                         <div style="grid-column: 2/3; justify-self: end">
                             <SubmitButton 
-                                btnType='submit'
-                                btnLabel='submit'/>
+                                btnLabel={btnl}
+                                error={inputError}
+                                on:click={submitTransferPropsl}/>
                         </div>
-                    </form>
+                    </div>
                     {/if}
                     
                     {#if lst001Proposal == 'approve'}
-                    <form  id='approve' transition:fly='{{y:-20, duration: 600}}'
+                    <div class='form'  id='approve' transition:fly='{{y:-20, duration: 600}}'
                     >
                     	<div style="grid-column: 1/2">
-				            <label>
+				            <label for='approve_tokenName'>
 				                token
 				                <input bind:value={approve_tokenName}>
 				            </label>
 				
-                            <label>
+                            <label for='approve_amount'>
                                 amount
-                                <input bind:value={approve_amount}>
+                                <InputDV
+                                    on:err={grabInputError}
+                                    bind:v={approve_amount}
+                                />
                             </label>
 
-                            <label>
+                            <label for='approve_to'>
                                 to
                                 <input bind:value={approve_to}>
                             </label>
@@ -390,57 +405,61 @@
 
                         <div style="grid-column: 2/3; justify-self: end">
                             <SubmitButton 
-                                btnType='submit'
-                                btnLabel='submit'/>
+                                btnLabel={btnl}
+                                error={inputError}
+                                on:click={submitApprovePropsl}/>
                         </div>
-                    </form>
+                    </div>
                     {/if}
 
                     {#if lst001Proposal == 'transfer_from'}
-                    <form  id='transferFrom' transition:fly='{{y:-20, duration: 600}}'
-                    >
+                    <div  class='form' id='transferFrom' transition:fly='{{y:-20, duration: 600}}'>
                     	<div style="grid-column: 1/2">
-		                <label>
-		                    token
-		                    <input bind:value={transferFrom_tokenName}/>
-		                </label>
-		                
-		                <label>
-		                    amount
-		                    <input bind:value={transferFrom_amount}/>
-		                </label>
+                            <label for='transferFrom_tokenName'>
+                                token
+                                <input bind:value={transferFrom_tokenName}/>
+                            </label>
+                            
+                            <label for='transferFrom_amount'>
+                                amount
+                                <InputDV
+                                    on:err={grabInputError}
+                                    bind:v={transferFrom_amount}
+                                />
+                            </label>
 
-		                <label>
-		                    to
-		                    <input bind:value={transferFrom_to}/>
-		                </label>
+                            <label for='transferFrom_to'>
+                                to
+                                <input bind:value={transferFrom_to}/>
+                            </label>
 
-		                <label >
-		                    main account
-		                    <input bind:value={transferFrom_mainAccount}>
-		                </label>
+                            <label for='transferFrom_mainAccount'>
+                                main account
+                                <input bind:value={transferFrom_mainAccount}>
+                            </label>
 			            </div>
 			
                         <div style="grid-column: 2/3; justify-self: end">
                             <SubmitButton 
-                                btnType='submit'
-                                btnLabel='submit'/>
+                                btnLabel={btnl}
+                                error={inputError}
+                                on:click={submitTransferFromPropsl}/>
                         </div>
-                    </form>
+                    </div>
                     {/if}
             </CollapsableBarLayer>
             {/each}
         {/if}
 
         {#if proposalName == 'Action'}
-        <form  id='action' transition:fly='{{y:-20, duration: 600}}'
+        <div class='form' id='action' transition:fly='{{y:-20, duration: 600}}'
         >
         	<div style="grid-column: 1/2">
 		    <label>
 		        action
 		        <input bind:value={action_action}>
 		    </label>
-		</div>
+		    </div>
 		
             	<div class='bulk-options' style="grid-column: 1/2" >
                 <p style="margin-bottom: 0;">bulk</p>
@@ -462,14 +481,14 @@
 
             <div style="grid-column: 2/3; justify-self: end">
                 <SubmitButton 
-                    btnType='submit'
-                    btnLabel='submit'/>
+                    btnLabel={btnl}
+                    on:click={submitActionPropsl}/>
             </div>
-        </form>
+        </div>
         {/if}
 
         {#if proposalName == 'External Action'}
-        <form id='extAction' transition:fly='{{y:-20, duration: 600}}'
+        <div class='form' id='extAction' transition:fly='{{y:-20, duration: 600}}'
         >
         	<div style="grid-column: 1/2">
 		    <label>
@@ -490,10 +509,10 @@
 		
             <div style="grid-column: 2/3; justify-self: end">
                 <SubmitButton 
-                    btnType='submit'
-                    btnLabel='submit'/>
+                    btnLabel={btnl}
+                    on:click={submitExtActionPropsl}/>
             </div>
-        </form>
+        </div>
         {/if}
     </CollapsableBar>
 {/each}
@@ -501,21 +520,6 @@
 
 
 <style>
-    form {
-	    display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: space-between;
-        align-items: flex-end;
-        width: 50%;
-        /* font-size: 2vh; */
-        font-size: 0.727em;
-        margin: auto;
-        border: 0.125em solid var(--flat-primary);
-        margin-top: 2em;
-        margin-bottom: 2em;
-        padding: 1.5em;
-	}
-
     .form{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -529,8 +533,7 @@
         margin-bottom: 2em;
         padding: 1.5em;
     }
-    
-    form input {
+    .form input {
         width: 80%;
         outline:none;
         background-color: transparent;
@@ -540,12 +543,11 @@
         border-left-style: hidden;
         border-right-style: hidden;
     }
-    form input[type='radio'] {
+    .form input[type='radio'] {
         width: auto;
         margin-left: 0;
     }
-    form label{
-        
+    .form label{
         display: flex;
         flex-direction: column;
         margin-top: 0.4em;
@@ -556,9 +558,7 @@
     }
     @media (max-width: 480px) {
 		.form{
-			width: 70%;
-			
-            
+			width: 70%;	
 		}
     }
    
