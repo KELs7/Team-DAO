@@ -1,7 +1,7 @@
 <script>
     import { fly } from 'svelte/transition';
     import { onMount } from 'svelte';
-    import { resultMessage, errorInfo, link, showNotification } from '$lib/stores/toasterInfo.js';
+    import { errorInfo, link, showNotification } from '$lib/stores/toasterInfo.js';
     import { buildTxInfo } from '../js/funcs.js';
     import {proposalBarNames, stateUpdateProposals, lst001Proposals} from '$lib/config/submitPageLayout.js'
     import { lwc } from '$lib/stores/controllerStore.js';
@@ -89,92 +89,107 @@
     }
 
     const submitRemoveOwnerPropsl = ()=>{
-        // clear input
-        i1 = '';
-        return sendPropsl('removeOwner', in1)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('removeOwner', removeOwner_address)
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        removeOwner_address = '';
     }
 
     const submitReplaceOwnerPropsl = ()=>{
-        // clear input
-        i1 = '';i2 = '';
-        return sendPropsl('replaceOwner', in2) 
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('replaceOwner', [replaceOwner_newOwner, replaceOwner_existing])
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        replaceOwner_newOwner = ''; replaceOwner_existing = '';
     }
 
     const submitRegisterActionPropsl = ()=>{
-        // clear input
-        i1 = '';i2 = '';
-        return sendPropsl('registerAction', in2)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('registerAction', [registerAction_action, registerAction_contract])
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        registerAction_action = ''; registerAction_contract = '';
     }
 
     const submitUnregisterActionPropsl = ()=>{
-        // clear input
-        i1 = '';
-        return sendPropsl('unregisterAction', in1)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('unregisterAction', unregisterAction_action)
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        unregisterAction_action = '';
     }
 
     const submitConfirmsPropsl = ()=>{
-        
-        // clear input
-        i1 = '';
-        return sendPropsl('confirms', in1)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('confirms', changeConfirms)
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        changeConfirms = '';
     }
 
     const submitDailyLimitPropsl = ()=>{
-        
-        // clear input
-        i1 = '';i2 = '';
-        return sendPropsl('dailyLimit', in2)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('dailyLimit', [changeDailyLimit_token, changeDailyLimit_amount])
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        changeDailyLimit_token = ''; changeDailyLimit_amount = '';
     }
 
     const submitTransferPropsl = ()=>{
-        
-        // clear input
-        i1 = '';i2 = '';i3 = '';
-        return sendPropsl('transfer', in3)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('transfer', [transfer_tokenName, transfer_amount, transfer_to])
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        transfer_tokenName = ''; transfer_amount = ''; transfer_to = '';
     }
 
     const submitApprovePropsl = ()=>{
-        
-        // clear input
-        i1 = '';i2 = '';i3 = '';
-        return sendPropsl('approve', in3)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('approve', [approve_tokenName, approve_amount, approve_to])
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        approve_tokenName = ''; approve_amount = ''; approve_to = '';
     }
 
     const submitTransferFromPropsl = ()=>{
-        
-        // clear input
-        i1 = '';i2 = '';i3 = '';i4 = '';
-        return sendPropsl('transferFrom', in4)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('approve', [transferFrom_tokenName, transferFrom_amount, transferFrom_to, transferFrom_mainAccount])
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        transferFrom_tokenName = ''; transferFrom_amount = ''; transferFrom_to = ''; transferFrom_mainAccount = '';
     }
 
     const submitActionPropsl = ()=>{
-        args = inS;
-        args[1]==1?args[1]='False':args[1]='True';
-        args[2]?args[2]=JSON.parse(args[2]):args[2]=null;
+        action_bulk==1?action_bulk='False':action_bulk='True';
+        action_payload[2]?action_payload=JSON.parse(action_payload):action_payload=null;
 
-        
-        // clear input
-        i1 = '';i2 = '';
-        return sendPropsl('action', args)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('action', [action_action, action_bulk, action_payload])
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        action_action = ''; action_payload = '';
+        // set to default value
+        action_bulk = 1
     }
 
     const submitExtActionPropsl = ()=>{
-        args = in3;
-        args[2]?args[2]=JSON.parse(args[2]):args[2]=null;
+        extAction_payload?extAction_payload=JSON.parse(extAction_payload):extAction_payload=null;
 
-        
         // clear input
         i1 = '';i2 = '';i3 = '';
 
-        return sendPropsl('extAction', args)
+        btnl = '. . .'
+        const propslInfo = buildTxInfo('extAction', [extAction_actionCore, extAction_action, extAction_payload])
+        $lwc.sendTransaction(propslInfo);
+        //clear input
+        extAction_actionCore = ''; extAction_action = ''; extAction_payload = '';
     }
 
      const grabInputError = (e)=>{
 	   inputError = e.detail
 	}
-
-    
-
+   
 </script>
 
 {#each proposalBarNames as proposalName}
