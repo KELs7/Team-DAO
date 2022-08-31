@@ -61,7 +61,7 @@
         } else{
             
             if (txBlockResult && Object.keys(txBlockResult).length > 0){
-                resultMessage.set(txBlockResult.result);
+                //resultMessage.set(txBlockResult.result);
                 link.set('https://www.tauhq.com/transactions/'+ txBlockResult.hash);
                 btnl = 'submit';  
                 showNotification.set(true);
