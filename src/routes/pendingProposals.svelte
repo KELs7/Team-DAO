@@ -53,10 +53,6 @@
 			})
 		}
 	};
-
-
-
-
 </script>
 <!--div class="container">
 	<div class='head-bar'>
@@ -76,7 +72,7 @@
 		<div class='no-pending'>No pending proposals</div>
 	{/if}
 
-
+	
 <style>
 	.container {
 		margin-top: 0.2em;
