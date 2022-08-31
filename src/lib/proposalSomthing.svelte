@@ -50,7 +50,7 @@
         } else{
             
             if (txBlockResult && Object.keys(txBlockResult).length > 0){
-                resultMessage.set(txBlockResult.result);
+                //resultMessage.set(txBlockResult.result);
                 link.set('https://www.tauhq.com/transactions/'+ txBlockResult.hash);
                 confirmBtnLabel = 'confirm';
                 revokeBtnLabel = 'revoke';  
@@ -218,9 +218,11 @@
 
 <style>
     .container {
+        display: flex;
+        justify-content: center;
         width: 80%;
         margin: auto;
-        margin-top: 0.1em;
+        margin-top: 1em;
         user-select: none;
         overflow: scroll;
         scrollbar-color: var(--flat-primary) var(--panel-background-color); 
@@ -235,10 +237,6 @@
     .container::-webkit-scrollbar-corner{
         display: none;
     }
-    
-    /* thead th {
-        border-bottom: 1px solid #000000;
-    } */
     .inside-container {
         display: flex;
         flex-direction: column;
@@ -266,7 +264,6 @@
         overflow:scroll;
 
     }
-    
     button {
         font-size: 0.77em;
         margin-right: 1em;
@@ -283,4 +280,11 @@
 
         }
     }
+    @media (min-width: 623px) {
+        table{
+            width: 420rem;
+
+        }
+    } 
+    
 </style>
