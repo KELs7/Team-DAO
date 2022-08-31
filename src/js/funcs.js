@@ -51,7 +51,7 @@ export const buildTxInfo = (type, args) => {
         case 'unregisterAction':
             kwargs = {
                 'propsl': {
-                    'unregister_action': args[0],
+                    'unregister_action': args,
                     'type': 'state_update'
                 }
             };
@@ -60,7 +60,7 @@ export const buildTxInfo = (type, args) => {
         case 'confirms':
             kwargs = {
                 'propsl': {
-                    'change_requirement': Lamden.Encoder('int', args[0]),
+                    'change_requirement': Lamden.Encoder('int', args),
                     'type': 'state_update'
                 }
             };
