@@ -27,8 +27,6 @@
 	<slot/>
 </main>
 
-
-
 <style>
 	main {
 		padding: 7vmax 5vw 15vw 10vw;
