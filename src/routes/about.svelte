@@ -20,11 +20,12 @@
     const ownerList = blockServiceData.multi_sign.owners
     ownerList.forEach((address)=>{
         let index = ownerList.indexOf(address);
-        let shortenedAddress = address.substring(0,7).concat(' . . . ' , address.substring(60,64))
-        ownerList[index] = shortenedAddress
+        let shortenedAddress = address.substring(0,7);
+        shortenedAddress += ' . . . ' + address.substring(60,64);
+        ownerList[index] = shortenedAddress;
     })
 
-    const d ={
+    const d = {
         owners: ownerList, 
         required: blockServiceData.multi_sign.required,
         //hardcoded because there's no initial registered action by multisig contract
