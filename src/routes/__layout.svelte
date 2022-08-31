@@ -4,7 +4,7 @@
 	import Header from '$lib/header.svelte';
 	import LeftMenu from '$lib/leftMenu.svelte';
 	import Menu from '$lib/menu.svelte';
-	import { resultMessage, errorInfo, link, showNotification } from '$lib/stores/toasterInfo.js';
+	import { errorInfo, link, showNotification } from '$lib/stores/toasterInfo.js';
 	import SlidingNotification from '$lib/slidingNotification.svelte';
 	
 	//css imports
@@ -18,17 +18,16 @@
 <Header on:click={()=>s=!s}/>
 <LeftMenu />
 <Menu bind:s/>
-
-<main>
-	<slot/>
-</main>
-
 <SlidingNotification 
-    resultMessage = {$resultMessage}
     errorInfo = {$errorInfo} 
     show={$showNotification} 
     link={$link}
 />
+<main>
+	<slot/>
+</main>
+
+
 
 <style>
 	main {
