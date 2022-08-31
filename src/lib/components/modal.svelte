@@ -40,6 +40,16 @@
         /* height: 50vh; */
         overflow: scroll;
     }
+    .container::-webkit-scrollbar{
+        height: auto;
+    }   
+    .container::-webkit-scrollbar-thumb{
+        background-color: var(--flat-primary);
+        border-radius: 5px;
+    }
+    .container::-webkit-scrollbar-corner{
+        display: none;
+    }
     textarea {
         width: 98%; 
         background-color: #000000; 
@@ -54,5 +64,6 @@
         position: absolute;
         top: 0;
         right: 0;
+        padding-right: 0;
     }
 </style>
