@@ -51,7 +51,10 @@
         const { data } = txResults
         let txR = data
         const { errors, txBlockResult } = txR
+        //const { errors, status, rejected, txData, txBlockResult } = txR
+        console.log(txR)
         if (errors){
+            console.log('inside error')
             errorInfo.set(errors);
             btnl = 'submit';
             showNotification.set(true);
@@ -74,10 +77,9 @@
 
     //lamdenWalletController listener here
     onMount(()=>{
-
-        if($lwc){
-            $lwc.events.on('txStatus', handleTxResults)
-        }
+        
+        $lwc.events.on('txStatus', handleTxResults);
+             
     })
     
     const submitAddOwnerPropsl = ()=>{
