@@ -10,9 +10,10 @@
 	let lamdenWalletController;
 
 	onMount(()=>{
-        lamdenWalletController = new WalletController()
-        lamdenWalletController.storeConnectionRequest(connectionRequest)
+        lamdenWalletController = new WalletController(connectionRequest)
+		lwc.set(lamdenWalletController)
         lamdenWalletController.events.on('newInfo', handleWalletInfo);
+		lamdenWalletController.sendConnection(connectionRequest)
     })
 
     const connectionRequest = {
@@ -35,10 +36,26 @@
                 }, 4000)
             })
         }else{
+			if(wInfo.setup){
+				if(wInfo.locked){
+					errorInfo.set('wallet is locked');
+					showNotification.set(true);
+
+					setTimeout(()=>{
+						showNotification.set(false);
+					}, 4000)
+					return
+				}
+				let w = wInfo.wallets[0];
+				walletAddress.set(w);
+				console.log(wInfo)
+				walletInfo = w.substring(0,7) + ' . . . ' + w.substring(60,64);  
+				return 
+			};
 			let w = wInfo.wallets[0];
-            walletAddress.set(w);
-            walletInfo = w.substring(0,7) + ' . . . ' + w.substring(60,64);
-            
+			walletAddress.set(w);
+			walletInfo = w.substring(0,7) + ' . . . ' + w.substring(60,64); 
+			
         }        
     };
 
@@ -46,14 +63,13 @@
 
         lamdenWalletController.walletIsInstalled()
         .then(installed=>{
-			lwc.set(lamdenWalletController)
+			//lwc.set(lamdenWalletController)
             if(!installed){
                 errorInfo.set('wallet not installed')
             }
         })
     }
 	
-
 	export let s = false;
 
     const menuItems = [
